@@ -1,5 +1,8 @@
 # The Investi-cattor
 
+<script type="module" src="main.js"></script>
+<link rel="stylesheet" href="main.css">
+
 ## Part One: The Shocking Discovery
 
 Discovery: Tuna is missing. Lots of it. Like, enough to make a real meal out of. Maybe even enough for the humans to care.
@@ -39,6 +42,12 @@ Each location here can be visited precisely once; the order is up to the player.
 
 (Note that "opposite" will actually be behind the back fence, NOT across the street)
 
+Randomization of which neighbour is in which location may be helpful.
+
 ### Fish-and-chippery
 
 There will be a red herring on the table.
+
+## Submit your findings
+
+## Footer

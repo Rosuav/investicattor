@@ -1,0 +1,21 @@
+#content {display: none;}
+
+h2,h3,h4,h5,h6 {
+	text-align: center;
+	font-weight: bold;
+}
+
+.travelbuttons {
+	border: 2px inset silver;
+	padding: 10px;
+	display: flex;
+	gap: 8px;
+}
+
+.travelbuttons button {
+	border-color: rebeccapurple;
+}
+.travelbuttons button[disabled] {
+	border-color: silver;
+	border-width: 1px;
+}
