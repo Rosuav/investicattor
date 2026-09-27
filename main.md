@@ -21,4 +21,24 @@ Places to investigate:
 * Vase on mantlepiece
 * Refrigerator
 
+As this is functionally the tutorial, you will be able to click on every clickable; however there will be a decrementing counter of how many more you have time to explore. Use clock symbols to hint that it's not "how much left in the scene".
+
 Once investigation here is complete, other locations open up. They can be visited in any order.
+
+## Part Three: Exploring
+
+Each location here can be visited precisely once; the order is up to the player.
+
+### Shop
+
+### Police Station (where my human works)
+
+### Neighbour (Left)
+### Neighbour (Right)
+### Neighbour (Opposite)
+
+(Note that "opposite" will actually be behind the back fence, NOT across the street)
+
+### Fish-and-chippery
+
+There will be a red herring on the table.
