@@ -1,4 +1,6 @@
 The Investi-cattor
 ==================
 
-Landing page text goes here. Click a thing to go to the actual investigation.
+Landing page text goes here.
+
+[Start the actual investigation](main)
