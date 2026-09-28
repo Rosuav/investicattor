@@ -60,7 +60,11 @@ Randomization of which neighbour is in which location may be helpful.
 
 ### Fish-and-chippery
 
-<!-- There will be a red herring on the table. -->
+This is a place where fish get dunked in some extremely painful oil, but then pulled out hot and crispy. If I ask enough
+humans, eventually one of them will give me a share! It is only right and fitting, after all.
+
+Most of the shop is dominanted by the [counter](counter) which has humans [in front of it](customers) and [behind it](staff).
+There are some other humans [eating at the tables](diners). There's also several [footprints](footprints) on the floor.
 
 ## Submit your findings
 

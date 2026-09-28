@@ -60,6 +60,11 @@ const investigate_basic = {
 		customers: P("Several people here, probably trying to buy tuna for their own cats."),
 	},
 	fission: {
+		counter: P("Too high to see over, but you could jump up onto it and have a look."),
+		customers: P("They're talking, probably figuring out the best type of fish to eat."),
+		staff: P("They dunk the fish in oil. I think they do other things too but mostly fish."),
+		diners: P("One of the people looks familiar. Might be worth talking to her."),
+		footprints: P("There are footprints on the floor! Not yours! They may be human!"),
 	},
 };
 
@@ -116,6 +121,42 @@ const investigate_full = {
 		]),
 	},
 	fission: {
+		counter: () => P([
+			"You jump up onto the counter, only to get shooed away. Not with a literal shoe, fortunately - not this time.",
+		]),
+		customers: () => P([
+			//Possible suspect: A customer seen here who eats far too much tuna and stole all the cans.
+			"You walk up to each of the humans, rub yourself against their legs, and determine that they're all innocent.",
+		]),
+		staff: () => P([
+			//Possible suspect: A staff member ran out of fish, bought more, and got misdelivery of the cans.
+			"They're very busy, and you're a little apprehensive about the kind of unfriendly welcome you might get.",
+		]),
+		diners: () => [
+			//Never a suspect. This is JUST a red herring.
+			P("You recognize her. She's a doctor named Lyn, and she likes cats."),
+			P([
+				"In fact, you've seen her at the Institute, where she and a very long cat (and a rice cooker) ",
+				"spend most of their time. She's currently eating what looks like a fish. You sit down beside ",
+				"her for a while, expressing your unending love for her and your desire for companionship.",
+			]),
+			P([
+				"Despite your best poker face, she seems to have figured out that you're asking for food. She ",
+				"refuses to give you any, but you can definitely smell it from down here.",
+			]),
+			P([
+				"Mmmmm, herring. Delicious food, delicious food. This one seems to be slathered in tomato sauce, ",
+				"rather than being eaten plain with salt. Not that there's anything wrong with tomatoes of course; ",
+				"but you like the grease and fish much more.",
+			]),
+			P([
+				"I suppose it's a red herring, then.",
+			]),
+		],
+		footprints: () => P([
+			//Possible evidence
+			"They look like a size meow, or maybe a bit bigger.",
+		]),
 	},
 };
 
