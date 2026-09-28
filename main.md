@@ -13,12 +13,15 @@ Cat takes him up on it. Tuna is just that important.
 
 ## Part Two: The Crime Scene
 
-A family home. A cat, practically starving to death, because this morning's meal of tuna was not provided. (No, the dry food does not count. I cannot survive on that stuff. Though I will eat it. Of course.) The delivery of tuna to the house was interrupted; it MUST be grand theft!
+A family home. A cat, practically starving to death, because this morning's meal of tuna was not provided. (No, the dry food does
+not count. I cannot survive on that stuff. Though I will eat it. Of course.) The delivery of tuna to the house was interrupted; it
+MUST be grand theft!
+
+The cat's [food bowl](foodbowl) stands horrifyingly empty. That would be a good place to start investigating!
 
 Places to investigate:
 
-* Food bowl
-* Kitchen cupboard
+* [Kitchen cupboard](cupboard)
 * Adult human (busy)
 * Smaller human (wants to pick you up)
 * Vase on mantlepiece
