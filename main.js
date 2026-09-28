@@ -50,6 +50,10 @@ const investigate_basic = {
 	crimescene: {
 		foodbowl: P("An empty food bowl. I don't know how the humans expect a cat to survive without tuna."),
 		cupboard: P("A kitchen cupboard at floor level. It's ajar; you could nudge it open with your nose if you want."),
+		adult: P("A full size human that regularly enters and leaves this house as if it owns the place."),
+		child: P("A reduced-size human that stays here. Talks to us with a high pitched voice."),
+		vase: P("On the mantlepiece, there's a vase. It would make a delicious sound if it hit the ground."),
+		fridge: P("The fridge, a place where the humans keep food. It is closed."),
 	},
 	shop: {
 		shopkeeper: P("Looks like a person. Hides behind some clanking mechanical stuff. Our humans go here before leaving the shop."),
@@ -82,6 +86,36 @@ const investigate_full = {
 			P([
 				"Inside the cupboard are various unpleasant-smelling boxes, a few old sponges that you ",
 				"could tear to pieces if you wanted to make a mess, and no cans of tuna. Disappointing.",
+			]),
+		],
+		adult: () => [
+			P([
+				//Suspect: The adult failed to provide food for no reason.
+				"Humans normally are expected to refill food bowls. It's their most important task, and ",
+				"this one is not doing it. There must be a reason. Might be that the human's broken.",
+			]),
+		],
+		child: () => [
+			P([
+				//Increased time cost?
+				"As you approach the small human, it reaches down to pick you up. You speak loudly, ",
+				"insisting that you do not want uppies right now, but it tries to pick you up anyway. ",
+				"There's a short chase around the house before the human gives up. What a waste of time.",
+			]),
+		],
+		vase: () => [
+			P("Let's make sure that gravity is working properly today."),
+			P({style: "font-style: italic; font-size: 24pt; color: yellow"}, "<< CRASH >>"),
+			P("Yep. Ahh that was satisfying."),
+		],
+		fridge: () => [
+			P([
+				//Increased time cost?
+				"Unfortunately for you, the fridge is very difficult to open. You wait around near it ",
+				"until one of the humans comes by, then politely request that it be opened so you can ",
+				"investigate. The small human says 'No', a word of unclear meaning, and then opens the ",
+				"door. Finally. You sniff around, but there's no tuna anywhere. Not really a surprise; ",
+				"it usually comes from cans.",
 			]),
 		],
 	},

@@ -22,10 +22,10 @@ The cat's [food bowl](foodbowl) stands horrifyingly empty. That would be a good 
 Places to investigate:
 
 * [Kitchen cupboard](cupboard)
-* Adult human (busy)
-* Smaller human (wants to pick you up)
-* Vase on mantlepiece
-* Refrigerator
+* [Adult human](adult)
+* [Smaller human](child)
+* [Vase on mantlepiece](vase)
+* [Refrigerator](fridge)
 
 As this is functionally the tutorial, you will be able to click on every clickable; however there will be a decrementing counter of how many more you have time to explore. Use clock symbols to hint that it's not "how much left in the scene".
 
