@@ -48,14 +48,16 @@ const defaultdest = Object.keys(destlabels);
 //can be learned by spending time.
 const investigate_basic = {
 	crimescene: {
-		foodbowl: [
-			P("An empty food bowl. I don't know how the humans expect a cat to survive without tuna."),
-		],
-		cupboard: [
-			P("A kitchen cupboard at floor level. It's ajar; you could nudge it open with your nose if you want."),
-		],
+		foodbowl: P("An empty food bowl. I don't know how the humans expect a cat to survive without tuna."),
+		cupboard: P("A kitchen cupboard at floor level. It's ajar; you could nudge it open with your nose if you want."),
 	},
 	shop: {
+		shopkeeper: P("Looks like a person. Hides behind some clanking mechanical stuff. Our humans go here before leaving the shop."),
+		yuck_vegetable: P("Don't know what this vegetable is but it smells bad, tastes worse, and isn't even good for expelling hairballs."),
+		crisp_vegetable: P("I'd love to stop and chew on this for a bit, but we have to find the tuna."),
+		pungent_boxes: P("I think these boxes contain food. Smells ... interesting."),
+		tuna: P("This is where the tuna should be. It's up at human height for some reason."),
+		customers: P("Several people here, probably trying to buy tuna for their own cats."),
 	},
 	fission: {
 	},
@@ -79,6 +81,39 @@ const investigate_full = {
 		],
 	},
 	shop: {
+		shopkeeper: () => [
+			P([
+				//Suspect: The shopkeeper refused sale.
+				//Possible evidence: Empty shelves, no tuna in stock
+				"It's possible that this person refused to provide tuna.",
+			]),
+		],
+		yuck_vegetable: () => P([
+			"You perform your vital duties of verifying that gravity is still in effect by knocking a ",
+			"bit of it onto the floor, only to receive an unpleasant look and a heavy sigh from a nearby human. ",
+			"They're ungrateful, and all you got for your trouble was a bitter taste.",
+		]),
+		crisp_vegetable: () => P([
+			"You nudge one of these lovely things onto the floor. One of the nearby humans sighs loudly, ",
+			"but doesn't stop you. You enjoy making some marks in it.",
+		]),
+		pungent_boxes: () => P([
+			"I think they smell like soap. What does soap smell like, again?",
+		]),
+		tuna: () => [
+			//Potential evidence. For now assuming that it isn't the cause.
+			P([
+				"Jumping up onto a shelf, you nudge your nose against the row of cans, counting them. ",
+				"The massive clatter on the floor sounded like about twenty, so there's clearly no lack ",
+				"of tuna at the shop.",
+			]),
+		],
+		customers: () => P([
+			//For now just a red herring but this might give you some other suspects to investigate.
+			//"It's just a human. Probably useless.", //use this somewhere
+			"There are a few humans around. Interviewing them has resulted in zero responses, but two people ",
+			"rubbed by head, so that was something.",
+		]),
 	},
 	fission: {
 	},

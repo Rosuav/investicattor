@@ -37,6 +37,17 @@ Each location here can be visited precisely once; the order is up to the player.
 
 ### Shop
 
+A local place of business that sells all kinds of irrelevant things, but also is contractually obliged to keep the cat
+supplied with tuna. This is usually done in the form of cans. Those are annoying metal containers that the humans use
+to keep their fingers clean (for some reason they don't seem to just lick it all off like we do), and which, when they
+finally deign to serve us, they open, to reveal the food inside.
+
+Near the front of the shop is a [human](shopkeeper) who may have caused us to have no tuna. Further back are displays
+of food, including [distasteful vegetables](yuck_vegetable), [interesting vegetables](crisp_vegetable), [smelly boxes](pungent_boxes),
+and of course, [tuna cans](tuna).
+
+There are several [other humans](customers) walking around. You could get in front of one if you wanted.
+
 ### Police Station (where my human works)
 
 ### Neighbour (Left)
@@ -49,7 +60,7 @@ Randomization of which neighbour is in which location may be helpful.
 
 ### Fish-and-chippery
 
-There will be a red herring on the table.
+<!-- There will be a red herring on the table. -->
 
 ## Submit your findings
 
