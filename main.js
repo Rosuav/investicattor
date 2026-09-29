@@ -35,6 +35,7 @@ const markdown = (() => {
 })();
 
 const state = {scene: "intro"};
+let here = { }; //Same as state[state.scene] once we're in a location.
 
 const locations = {
 	crimescene: {
@@ -48,6 +49,7 @@ const locations = {
 	},
 };
 const all_locations = Object.keys(locations); //We'll use this in a few places; easier to lock it in once.
+let loc; //Same as locations[state.scene]
 
 //Basic investigation info is what you can see from a cursory glance. It is unaffected by any
 //form of randomization - it will be the same text every time you play the game. Further details
@@ -210,7 +212,7 @@ function TRAVELBUTTONS(dest) {
 	]);
 }
 
-const scenes = {
+const render_scene = {
 	intro() {return [
 		markdown["part-one-the-shocking-discovery"],
 		TRAVELBUTTONS(["crimescene"]),
@@ -236,14 +238,19 @@ const scenes = {
 }
 
 function repaint() {
-	replace_content(main, scenes[state.scene]());
+	replace_content(main, render_scene[state.scene]());
 }
 repaint();
 
 on("click", "[data-dest]", e => {
 	//Travel to a new location
 	state.scene = e.match.dataset.dest;
-	state[state.scene] = {investigated: { }};
+	//NOTE: Currently time_spent is always equal to Object.keys(investigated).length, but
+	//this may not always hold (if some investigations take more or less time). For now,
+	//retaining the separate variable, but the design elegance of "everything takes 1 time
+	//unit" is probably worth keeping.
+	here = state[state.scene] = {investigated: { }, time_spent: 0};
+	loc = locations[state.scene];
 	repaint();
 });
 
@@ -256,7 +263,7 @@ on("click", "[data-investigate]", e => {
 	//case you will be shown the same info again).
 	//NOTE: We assume here that there is only ever one button for a given investigation
 	//target. It would be confusing for the player to have multiple anyway.
-	const detail = state[state.scene].investigated[item];
+	const detail = here.investigated[item];
 	replace_content(DOM("#inspectinfo"), [
 		investigate_basic[state.scene][item],
 		detail,
@@ -269,7 +276,7 @@ on("click", "[data-investigate]", e => {
 on("click", "#inspect-full", e => {
 	DOM("#inspectdlg").close();
 	const item = fullinvestigate.dataset.investigate;
-	state[state.scene].investigated[item] = [
+	here.investigated[item] = [
 		lindt.HR(),
 		investigate_full[state.scene][item](),
 	];
