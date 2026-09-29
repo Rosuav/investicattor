@@ -27,9 +27,8 @@ Places to investigate:
 * [Vase on mantlepiece](vase)
 * [Refrigerator](fridge)
 
-As this is functionally the tutorial, you will be able to click on every clickable; however there will be a decrementing counter of how many more you have time to explore. Use clock symbols to hint that it's not "how much left in the scene".
-
-Once investigation here is complete, other locations open up. They can be visited in any order.
+Here in the crime scene itself, you will have time to investigate everything; however this will not always be
+the case. Keep an eye on the clocks to see how much more time you have!
 
 ## Part Three: Exploring
 
