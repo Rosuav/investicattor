@@ -1,5 +1,5 @@
 import {choc, replace_content, lindt, DOM, on, apply_fixes} from "https://rosuav.github.io/choc/factory.js";
-const {BUTTON, DIALOG, DIV, H3, HEADER, P, SECTION} = lindt; //autoimport
+const {BUTTON, DIALOG, DIV, H3, HEADER, P, SECTION, SPAN} = lindt; //autoimport
 
 document.body.appendChild(replace_content(null, DIALOG({id: "inspectdlg"}, SECTION([
 	HEADER([H3("Inspect"), DIV([BUTTON({type: "button", class: "dialog_cancel"}, "x")])]),
@@ -40,12 +40,19 @@ let here = { }; //Same as state[state.scene] once we're in a location.
 const locations = {
 	crimescene: {
 		dest: "The Crime Scene", //Label for the button that you click to get here
+		time_limit: "Amount of investigation time available in this location",
+		time_min: "Minimum investigation before the travel buttons unlock",
+		//(For the tutorial, both of them are forced to be equal to the number of investigatables.)
 	},
 	shop: {
 		dest: "Local shop",
+		time_limit: 3,
+		time_min: 2,
 	},
 	fission: {
 		dest: "Fish-and-chippery",
+		time_limit: 3,
+		time_min: 1,
 	},
 };
 const all_locations = Object.keys(locations); //We'll use this in a few places; easier to lock it in once.
@@ -79,6 +86,8 @@ const investigate_basic = {
 		footprints: P("There are footprints on the floor! Not yours! They may be human!"),
 	},
 };
+//For the tutorial, you are always both allowed and required to investigate everything.
+locations.crimescene.time_limit = locations.crimescene.time_min = Object.keys(investigate_basic.crimescene).length;
 
 //Unlike basic investigation, these are functions, and may manipulate state.
 //(Decrementing time is done automatically.)
@@ -113,8 +122,8 @@ const investigate_full = {
 		],
 		vase: () => [
 			P("Let's make sure that gravity is working properly today."),
-			P({style: "font-style: italic; font-size: 24pt; color: yellow"}, "<< CRASH >>"),
-			P("Yep. Ahh that was satisfying."),
+			P({style: "font-style: italic; font-size: 24pt; color: #bb0"}, "<< CRASH >>"),
+			P("Yep. Ahh, that was satisfying."),
 		],
 		fridge: () => [
 			P([
@@ -214,31 +223,46 @@ function TRAVELBUTTONS(dest) {
 
 const render_scene = {
 	intro() {return [
-		markdown["part-one-the-shocking-discovery"],
+		...markdown["part-one-the-shocking-discovery"],
 		TRAVELBUTTONS(["crimescene"]),
 	]},
 	crimescene() {return [
-		markdown["part-two-the-crime-scene"],
+		...markdown["part-two-the-crime-scene"],
 		TRAVELBUTTONS(),
 	]},
 	shop() {return [
-		markdown["shop"],
+		...markdown["shop"],
 		TRAVELBUTTONS(),
 	]},
 	fission() {return [
-		markdown["fish-and-chippery"],
+		...markdown["fish-and-chippery"],
 		TRAVELBUTTONS(),
 	]},
 	denoument() {return [
-		markdown["submit-your-findings"],
+		...markdown["submit-your-findings"],
 		//TODO: This is where you select a person to accuse (or "no crime happened" but maybe disable that
 		//because the cat will always see that it's a crime to have no tuna), list the supporting evidence,
 		//and submit the case to the human.
 	]},
 }
 
+//Return a string of length characters with consecutive code points starting at start
+//eg unicode_range(65, 4) ==> "ABCD"
+function unicode_range(start, length) {
+	const cp = [];
+	for (let i = 0; i < length; ++i) cp.push(start + i);
+	return String.fromCodePoint(...cp);
+}
+
 function repaint() {
-	replace_content(main, render_scene[state.scene]());
+	replace_content(main, [
+		loc && DIV({id: "status"}, [
+			"Time: ",
+			SPAN({id: "time_spent"}, unicode_range(0x1f550, here.time_spent)),
+			SPAN({id: "time_remaining"}, unicode_range(0x1f550 + here.time_spent, loc.time_limit - here.time_spent)),
+		]),
+		render_scene[state.scene](),
+	]);
 }
 repaint();
 
@@ -276,10 +300,12 @@ on("click", "[data-investigate]", e => {
 on("click", "#inspect-full", e => {
 	DOM("#inspectdlg").close();
 	const item = fullinvestigate.dataset.investigate;
+	++here.time_spent;
 	here.investigated[item] = [
 		lindt.HR(),
 		investigate_full[state.scene][item](),
 	];
 	fullinvestigate.classList.add("seen");
+	repaint();
 	fullinvestigate.click(); //Close and re-show the dialog, now with more info.
 });

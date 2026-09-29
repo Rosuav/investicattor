@@ -59,3 +59,18 @@ dialog > section > div {
 .dlgbuttonbox button {
 	margin-right: 8px;
 }
+
+#status {
+	position: sticky;
+	top: 2rem; right: 6rem;
+	border: 1px solid rebeccapurple;
+	background: aliceblue;
+	padding: 0.5em;
+	width: max-content;
+	margin-left: auto;
+}
+
+#time_spent {
+	filter: saturate(0);
+	opacity: 25%;
+}
