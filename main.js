@@ -360,6 +360,7 @@ on("click", "#shownotes", e => {
 	replace_content("#notesinfo", [
 		DIV({id: "catquote"}, [
 			'"', random_choice(cat_quotes[situation]), '"',
+			//rosuavFade emote because it's a good-looking Cheshire Cat (credit to Maaya on Twitch for the artwork)
 			IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/static/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),
 		]),
 		P("This is where I keep track of everything that matters. Checking this is done at the speed of cat, so it won't consume any investigation time."),
