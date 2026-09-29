@@ -1,10 +1,15 @@
 import {choc, replace_content, lindt, DOM, on, apply_fixes} from "https://rosuav.github.io/choc/factory.js";
-const {BUTTON, DIALOG, DIV, H3, HEADER, P, SECTION, SPAN} = lindt; //autoimport
+const {BUTTON, DIALOG, DIV, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
 
 document.body.appendChild(replace_content(null, DIALOG({id: "inspectdlg"}, SECTION([
 	HEADER([H3("Inspect"), DIV([BUTTON({type: "button", class: "dialog_cancel"}, "x")])]),
 	DIV({id: "inspectinfo"}, "loading..."),
 	P({class: "dlgbuttonbox"}, [BUTTON({class: "dialog_close"}, "Close"), BUTTON({id: "inspect-full"}, "Inspect fully")]),
+]))));
+document.body.appendChild(replace_content(null, DIALOG({id: "notesdlg"}, SECTION([
+	HEADER([H3("My excellent notes"), DIV([BUTTON({type: "button", class: "dialog_cancel"}, "x")])]),
+	DIV({id: "notesinfo"}),
+	P({class: "dlgbuttonbox"}, [BUTTON({class: "dialog_close"}, "Okay, we're good.")]),
 ]))));
 apply_fixes({close_selector: ".dialog_cancel,.dialog_close", click_outside: "formless", methods: 1});
 
@@ -257,9 +262,14 @@ function unicode_range(start, length) {
 function repaint() {
 	replace_content(main, [
 		loc && DIV({id: "status"}, [
-			"Time: ",
-			SPAN({id: "time_spent"}, unicode_range(0x1f550, here.time_spent)),
-			SPAN({id: "time_remaining"}, unicode_range(0x1f550 + here.time_spent, loc.time_limit - here.time_spent)),
+			DIV([
+				"Time: ",
+				SPAN({id: "time_spent"}, unicode_range(0x1f550, here.time_spent)),
+				SPAN({id: "time_remaining"}, unicode_range(0x1f550 + here.time_spent, loc.time_limit - here.time_spent)),
+			]),
+			DIV({style: "display: flex; justify-content: space-evenly;"}, [
+				BUTTON({type: "button", id: "shownotes"}, "Check notes"), //Need a better label
+			]),
 		]),
 		render_scene[state.scene](),
 	]);
@@ -308,4 +318,57 @@ on("click", "#inspect-full", e => {
 	fullinvestigate.classList.add("seen");
 	repaint();
 	fullinvestigate.click(); //Close and re-show the dialog, now with more info.
+});
+
+const cat_quotes = {
+	generic: [ //Generic quotes that could always be used (if nothing else is more suitable)
+		"Do cats eat bats? Do bats eat cats?",
+		"Put cats in the coffee and mice in the tea",
+		"The truth is revealed to those too small to be deceived. But truth is that which, when you stop believing in it, does not cease to be.",
+		"My natural curiosity is tempered with caution - thus I've lived long.",
+		"As knowing where you're going is preferable to being lost, ask.",
+		"Time to raise some havoc! The dogs of war are loose!",
+		"Observe, learn, and react.",
+		"Steps to enlightenment brighten the way, but the steps are steep. Take them one at a time.",
+		"A reflection sometimes exposes more reality than the object it echoes.",
+	],
+	time_expired: [ //You're out of time here. Move on.
+		"You're sure to get somewhere, if you walk long enough.",
+		"Only a few find the way. Some don't recognize it when they do. Some don't ever want to.",
+		"The proper order of things is often a mystery to me. You, too?",
+		"It's rude to eat and run, but sometimes it's unavoidable.",
+	],
+	get_started: [ //You got here and haven't investigated yet.
+		"Every adventure requires a first step. Trite but true, even here.",
+		"The uninformed must improve their deficit, or die.",
+	],
+	unused: [ //Unused lines that could be applied to special situations
+		"Always collect what's useful. Reject only your ignorance, and you may survive.",
+		"Confront what frightens or offends you. Reckless or insulting talk should never go unchallenged.",
+		"Doors have locks, locks need keys, which you don't have.",
+	],
+};
+
+function random_choice(arr) {
+	return arr[Math.floor(Math.random() * arr.length)];
+}
+
+on("click", "#shownotes", e => {
+	let situation = "generic";
+	if (here.time_spent === 0) situation = "get_started";
+	if (here.time_spent >= loc.time_limit) situation = "time_expired";
+	replace_content("#notesinfo", [
+		DIV({id: "catquote"}, [
+			'"', random_choice(cat_quotes[situation]), '"',
+			IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/static/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),
+		]),
+		P("This is where I keep track of everything that matters. Checking this is done at the speed of cat, so it won't consume any investigation time."),
+		P([
+			`We currently have ${loc.time_limit - here.time_spent} out of ${loc.time_limit} time left in this location. `,
+			SPAN({id: "time_spent"}, unicode_range(0x1f550, here.time_spent)),
+			SPAN({id: "time_remaining"}, unicode_range(0x1f550 + here.time_spent, loc.time_limit - here.time_spent)),
+			" Brief looks at suspicious things don't take long, but a full inspection costs one time.",
+		]),
+	]);
+	DOM("#notesdlg").showModal();
 });
