@@ -261,7 +261,7 @@ function unicode_range(start, length) {
 
 function repaint() {
 	replace_content(main, [
-		loc && DIV({id: "status"}, [
+		loc && DIV({id: "status-holder"}, DIV({id: "status"}, [
 			DIV([
 				"Time: ",
 				SPAN({id: "time_spent"}, unicode_range(0x1f550, here.time_spent)),
@@ -270,7 +270,7 @@ function repaint() {
 			DIV({style: "display: flex; justify-content: space-evenly;"}, [
 				BUTTON({type: "button", id: "shownotes"}, "Check notes"), //Need a better label
 			]),
-		]),
+		])),
 		render_scene[state.scene](),
 	]);
 }

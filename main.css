@@ -60,9 +60,12 @@ dialog > section > div {
 	margin-right: 8px;
 }
 
-#status {
+#status-holder {
 	position: sticky;
 	top: 2rem; right: 6rem;
+	height: 0;
+}
+#status {
 	border: 1px solid rebeccapurple;
 	background: aliceblue;
 	padding: 0.5em;
