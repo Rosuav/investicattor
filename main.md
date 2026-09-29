@@ -49,13 +49,31 @@ There are several [other humans](customers) walking around. You could get in fro
 
 ### Police Station (where my human works)
 
-### Neighbour (Left)
-### Neighbour (Right)
-### Neighbour (Opposite)
+### Neighbour: Left
 
-(Note that "opposite" will actually be behind the back fence, NOT across the street)
+You visit the neighbour to the left of the victim's house. Maybe someone here saw something.
 
-Randomization of which neighbour is in which location may be helpful.
+### Neighbour: Right
+
+The neighbour to the right of the victim seems like a good place to find information.
+
+### Neighbour: Opposite
+
+A quick jump and you're over the fence; the back door is open and you can visit one of your victim's neighbours.
+
+### Neighbour: Canine
+
+Paragraph one about canine
+
+Para two
+
+### Neighbour: Smelly
+
+Smells of diesel.
+
+### Neighbour: Littered
+
+Lots of detritus.
 
 ### Fish-and-chippery
 

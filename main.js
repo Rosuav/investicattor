@@ -45,23 +45,57 @@ let here = { }; //Same as state[state.scene] once we're in a location.
 const locations = {
 	crimescene: {
 		dest: "The Crime Scene", //Label for the button that you click to get here
+		markdown: "part-two-the-crime-scene",
 		time_limit: "Amount of investigation time available in this location",
 		time_min: "Minimum investigation before the travel buttons unlock",
 		//(For the tutorial, both of them are forced to be equal to the number of investigatables.)
 	},
 	shop: {
 		dest: "Local shop",
+		markdown: "shop",
 		time_limit: 3,
 		time_min: 2,
 	},
 	fission: {
 		dest: "Fish-and-chippery",
+		markdown: "fish-and-chippery",
 		time_limit: 3,
 		time_min: 1,
 	},
+	neighbour_canine: {
+		markdown: "neighbour-canine",
+		time_limit: 1,
+		time_min: 1,
+	},
+	neighbour_smelly: {
+		markdown: "neighbour-smelly",
+		time_limit: 1,
+		time_min: 1,
+	},
+	neighbour_littered: {
+		markdown: "neighbour-littered",
+		time_limit: 1,
+		time_min: 1,
+	},
 };
-const all_locations = Object.keys(locations); //We'll use this in a few places; easier to lock it in once.
+const all_locations = Object.keys(locations); //The order in here defines the order of the buttons.
 let loc; //Same as locations[state.scene]
+
+//The three neighbours are randomly permuted, so "left" might be any of the three.
+//The description as you go there starts with the heading for the destination, then has content from the
+//direction, and then the content from the destination.
+all_locations.length -= 3; //Remove the neighbour_* entries so we can add them in order
+const neighbours = ["canine", "smelly", "littered"];
+["left", "right", "opposite"].forEach(dir => {
+	const kwd = neighbours.splice(Math.floor(Math.random() * neighbours.length), 1)[0];
+	const dest = "neighbour_" + kwd;
+	locations[dest].dest = "Neighbour (" + dir + ")";
+	all_locations.push(dest);
+	const details = markdown["neighbour-" + kwd], travel = markdown["neighbour-" + dir];
+	//Throw away the heading about the neighbour themselves, and replace it with the heading
+	//and content about the travel direction.
+	details.splice(0, 1, ...travel);
+});
 
 //Basic investigation info is what you can see from a cursory glance. It is unaffected by any
 //form of randomization - it will be the same text every time you play the game. Further details
@@ -231,18 +265,6 @@ const render_scene = {
 		...markdown["part-one-the-shocking-discovery"],
 		TRAVELBUTTONS(["crimescene"]),
 	]},
-	crimescene() {return [
-		...markdown["part-two-the-crime-scene"],
-		TRAVELBUTTONS(),
-	]},
-	shop() {return [
-		...markdown["shop"],
-		TRAVELBUTTONS(),
-	]},
-	fission() {return [
-		...markdown["fish-and-chippery"],
-		TRAVELBUTTONS(),
-	]},
 	denoument() {return [
 		...markdown["submit-your-findings"],
 		//TODO: This is where you select a person to accuse (or "no crime happened" but maybe disable that
@@ -250,6 +272,11 @@ const render_scene = {
 		//and submit the case to the human.
 	]},
 }
+//The investigable locations are easy to render, no need to write the code for them all
+all_locations.forEach(loc => {
+	const md = locations[loc].markdown;
+	if (md) render_scene[loc] = () => [...markdown[md], TRAVELBUTTONS()];
+});
 
 //Return a string of length characters with consecutive code points starting at start
 //eg unicode_range(65, 4) ==> "ABCD"
