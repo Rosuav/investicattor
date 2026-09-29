@@ -36,12 +36,18 @@ const markdown = (() => {
 
 const state = {scene: "intro"};
 
-const destlabels = {
-	crimescene: "The Crime Scene",
-	shop: "Local shop",
-	fission: "Fish-and-chippery",
+const locations = {
+	crimescene: {
+		dest: "The Crime Scene", //Label for the button that you click to get here
+	},
+	shop: {
+		dest: "Local shop",
+	},
+	fission: {
+		dest: "Fish-and-chippery",
+	},
 };
-const defaultdest = Object.keys(destlabels);
+const all_locations = Object.keys(locations); //We'll use this in a few places; easier to lock it in once.
 
 //Basic investigation info is what you can see from a cursory glance. It is unaffected by any
 //form of randomization - it will be the same text every time you play the game. Further details
@@ -196,10 +202,10 @@ const investigate_full = {
 
 function TRAVELBUTTONS(dest) {
 	let have_dest = false;
-	(dest||defaultdest).forEach(d => !state[d] && (have_dest = true));
+	(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
 	return DIV({class: "travelbuttons"}, [
 		"Travel to: ",
-		(dest||defaultdest).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, destlabels[d])),
+		(dest||all_locations).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, locations[d].dest)),
 		!have_dest && BUTTON({type: "button", "data-dest": "denoument"}, "Announce your results"),
 	]);
 }
