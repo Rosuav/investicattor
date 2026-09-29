@@ -10,10 +10,12 @@ h2,h3,h4,h5,h6 {
 	padding: 10px;
 	display: flex;
 	gap: 8px;
+	flex-wrap: wrap;
 }
 
 .travelbuttons button {
 	border-color: rebeccapurple;
+	white-space: nowrap;
 }
 .travelbuttons button[disabled] {
 	border-color: silver;
