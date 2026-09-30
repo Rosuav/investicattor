@@ -90,3 +90,7 @@ dialog > section > div {
 	vertical-align: text-top;
 	margin-left: 0.5em;
 }
+
+#inspect-full[disabled] {
+	color: silver;
+}

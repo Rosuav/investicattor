@@ -452,16 +452,22 @@ on("click", "[data-investigate]", e => {
 		investigate_basic[state.scene][item],
 		detail,
 	]);
-	//FIXME: If enforce_time_limits and you have no time left, hide the button.
-	const seen = DOM("#inspect-full").hidden = !!detail;
-	if (!seen) fullinvestigate = e.match;
+	//You can fully investigate something if there's time available (but if you already have,
+	//the details are simply repeated at no time cost).
+	const investigable = !enforce_time_limits || here.time_spent < loc.time_limit;
+	const seen = !!detail;
+	if (investigable && !seen) fullinvestigate = e.match;
+	DOM("#inspect-full").hidden = seen;
+	replace_content("#inspect-full",
+		investigable ? "Inspect fully" : "(out of time)",
+	).disabled = !investigable;
 	DOM("#inspectdlg").showModal();
 });
 
 on("click", "#inspect-full", e => {
 	DOM("#inspectdlg").close();
+	if (enforce_time_limits && here.time_spent >= loc.time_limit) return; //Shouldn't happen (the button should be hidden).
 	const item = fullinvestigate.dataset.investigate;
-	//FIXME: If enforce_time_limits and you have no time left, bail.
 	++here.time_spent;
 	here.investigated[item] = [
 		lindt.HR(),
