@@ -1,7 +1,7 @@
 import {choc, replace_content, lindt, DOM, on, apply_fixes} from "https://rosuav.github.io/choc/factory.js";
 const {A, BUTTON, DIALOG, DIV, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
 
-const enforce_minimums = true; //Set to True for publication, but False for testing lets us skip through quicker
+const enforce_time_limits = true; //Set to True for publication, but False for testing lets us skip through quicker
 
 document.body.appendChild(replace_content(null, DIALOG({id: "inspectdlg"}, SECTION([
 	HEADER([H3("Inspect"), DIV([BUTTON({type: "button", class: "dialog_cancel"}, "x")])]),
@@ -71,17 +71,17 @@ const locations = {
 	},
 	neighbour_canine: {
 		markdown: "neighbour-canine",
-		time_limit: 1,
+		time_limit: 3,
 		time_min: 1,
 	},
 	neighbour_smelly: {
 		markdown: "neighbour-smelly",
-		time_limit: 1,
+		time_limit: 3,
 		time_min: 1,
 	},
 	neighbour_littered: {
 		markdown: "neighbour-littered",
-		time_limit: 1,
+		time_limit: 2,
 		time_min: 1,
 	},
 };
@@ -131,8 +131,32 @@ const investigate_basic = {
 		diners: P("One of the people looks familiar. Might be worth talking to her."),
 		footprints: P("There are footprints on the floor! Not yours! They may be human!"),
 	},
+	neighbour_canine: {
+		dogbowl: P("The dog's bowl usually has some food in it. What is it today?"),
+		kitchen: P("There are several cupboards and cabinets that you could poke your nose into."),
+		upstairs: P("Doesn't look like there's anybody upstairs."),
+		human: P("The human is curently staring at one of those rustling things they call a book."),
+		roof: P("The roof is some kind of weird shade of red. Wait, is that the colour humans call red?"),
+		dog: P("The dog's not here at the moment, but his usual spot is thoroughly trodden into hard dirt."),
+	},
+	neighbour_smelly: {
+		boat: P("It's currently making disgusting noises - is this what they call music? Can't be very interesting."),
+		humans: P("They're playing with that boat thing again. They don't seem to have noticed a cat approach."),
+		cabinet: P("Looks like a perfect hiding place for stolen tuna!"),
+		couch: P("One of the humans is sitting here, saying 'where is that silly phone', only he's not saying 'silly'."),
+		laser: P("Lasers are the ultimate weapon for cats. If we could catch one, it would be the best day ever."),
+		nest: P("Birds don't eat tuna, but cats eat birds."),
+		windvane: P("It's supposed to be some sort of rooster that points in different directions. You are indifferent to its directions."),
+	},
+	neighbour_littered: {
+		stuff: P("A lot of stuff. If there's any tuna in here, it's been here for years."),
+		window: P("The window is too high to get through, but you can definitely smell food being made on the other side."),
+		human: P("The human is making food. You approach, hoping either to learn about stolen tuna, or about dinner."),
+		basement: P("It's locked."),
+		solarheater: P("Massive black area all over the roof - no idea why the humans installed it."),
+	},
 };
-//For the tutorial, you are always both allowed and required to investigate everything.
+//For the tutorial, you are always allowed to investigate everything.
 locations.crimescene.time_limit = Object.keys(investigate_basic.crimescene).length;
 
 //Unlike basic investigation, these are functions, and may manipulate state.
@@ -256,6 +280,84 @@ const investigate_full = {
 			"They look like a size meow, or maybe a bit bigger.",
 		]),
 	},
+	neighbour_canine: {
+		dogbowl: () => P([
+			"Looks like that weird meaty mash that they get out of cans. Not tuna, but if you're ",
+			"hungry enough, it's food. The dog always seems hungry enough. Or maybe he likes it.",
+		]),
+		kitchen: () => P([
+			//Possible evidence
+			"The first five cabinets you inspect have nothing but metal, plastic, or glass containers, ",
+			"devoid of food and thus of interest. In the sixth, you find a messy collection of cleaners, ",
+			"and in the seventh, some canned food. Interesting. Not tuna though.",
+		]),
+		upstairs: () => P("A quick trot up the stairs confirms it - there's nobody there. He's downstairs."),
+		human: () => P([
+			//Possible suspect
+			"The human is reading from one of those 'book' things, probably very exciting to those small ",
+			"brains that humans possess. You sidle up to him and gently request head pats. He obliges.",
+		]),
+		roof: () => P("Never been good at identifying roofing types. Is that the one they call slate? No, tiles. Or something."),
+		dog: () => P("You spend some time marking the dog's favourite spot as your territory. Not that the dog cares."),
+	},
+	neighbour_smelly: {
+		boat: () => P([
+			"The humans are playing with their boat thing. It's making all those weird rumbling noises that ",
+			"the humans love so much. No sign of stolen tuna, and you really don't want to stick around too long ",
+			"with this much music happening. The humans are preoccupied and don't respond to you.",
+		]),
+		humans: () => P([
+			"I can't stand the music that these humans play on their boat, for hours and hours at a time. ",
+			"There's no sign of stolen tuna on, around, or near the boat anyway, and it's too uncomfortable ",
+			"to stay here and ask for head pats.",
+		]),
+		cabinet: () => P([
+			//Possible evidence
+			"Alas, no cans of tuna in here. Just some dusty books.",
+		]),
+		couch: () => P([
+			//Possible suspect
+			"Whatever the issue is with that phone, it's making the human extremely frustrated and displeased. ",
+			"If you cared more, you could offer some comfort, but you don't, so you don't.",
+		]),
+		laser: () => [
+			P("You fantasize for a while about lasers."),
+			A({href: "https://xkcd.com/729/", target: "_blank", title: "It's a lasing cat-vity! - XKCD"},
+				IMG({src: "https://imgs.xkcd.com/comics/laser_pointer.png", style: "width: 100%"})),
+			P("Some day. Some day."),
+		],
+		nest: () => P([
+			"Chasing down birds is always fun, but right now, it would only get in the way of the investigation.",
+		]),
+		windvane: () => P([
+			"Despite having known for years that poultry are bird-brained, you still have never quite understood ",
+			"why this one perches on top of the house day and night, just spinning around in the wind. Even for a ",
+			"metallic bird, that must get boring after a while!",
+		]),
+	},
+	neighbour_littered: {
+		stuff: () => P([
+			"Poking around in this stuff reveals an entirely unsurprising lack of tuna. What a waste of time.",
+		]),
+		window: () => P([
+			"You jump at the window and smack your head into the glass. The open part is way too high to get through.",
+		]),
+		human: () => P([
+			//Possible suspect
+			"Whether there's tuna here or not, there's definitely delicious food being made. You take advantage of the ",
+			"open side door and sidle up to the human, hoping for a sample. One is dropped to you - perhaps not ",
+			"intentionally but that makes no difference - and you devour it happily. Now then. About that investigation.",
+		]),
+		basement: () => [
+			P({class: "catquote"}, "Doors have locks, locks need keys, which you don't have."),
+			//Let this one animate because why not!
+			IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/default/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),
+		],
+		solarheater: () => P([
+			"It's annoyingly high and hard to reach, and you know from past experience that it burns your paws. Also, ",
+			"it's just a roof heater thing. How would it steal tuna??",
+		]),
+	},
 };
 
 function TRAVELBUTTONS(dest) {
@@ -313,7 +415,7 @@ repaint();
 
 on("click", "[data-dest]", e => {
 	//Travel to a new location
-	if (enforce_minimums && (here.time_spent||0) < (loc?.time_min||0)) {
+	if (enforce_time_limits && (here.time_spent||0) < (loc?.time_min||0)) {
 		replace_content("#dontgoyet", [
 			P([
 				"You've hardly investigated enough here! Once you leave, there won't be time to come back. We have ",
@@ -350,6 +452,7 @@ on("click", "[data-investigate]", e => {
 		investigate_basic[state.scene][item],
 		detail,
 	]);
+	//FIXME: If enforce_time_limits and you have no time left, hide the button.
 	const seen = DOM("#inspect-full").hidden = !!detail;
 	if (!seen) fullinvestigate = e.match;
 	DOM("#inspectdlg").showModal();
@@ -358,6 +461,7 @@ on("click", "[data-investigate]", e => {
 on("click", "#inspect-full", e => {
 	DOM("#inspectdlg").close();
 	const item = fullinvestigate.dataset.investigate;
+	//FIXME: If enforce_time_limits and you have no time left, bail.
 	++here.time_spent;
 	here.investigated[item] = [
 		lindt.HR(),
@@ -393,7 +497,6 @@ const cat_quotes = {
 	unused: [ //Unused lines that could be applied to special situations
 		"Always collect what's useful. Reject only your ignorance, and you may survive.",
 		"Confront what frightens or offends you. Reckless or insulting talk should never go unchallenged.",
-		"Doors have locks, locks need keys, which you don't have.",
 	],
 };
 
@@ -406,7 +509,7 @@ on("click", "#shownotes", e => {
 	if (here.time_spent === 0) situation = "get_started";
 	if (here.time_spent >= loc.time_limit) situation = "time_expired";
 	replace_content("#notesinfo", [
-		DIV({id: "catquote"}, [
+		DIV({class: "catquote"}, [
 			'"', random_choice(cat_quotes[situation]), '"',
 			//rosuavFade emote because it's a good-looking Cheshire Cat (credit to Maaya on Twitch for the artwork)
 			IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/static/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),

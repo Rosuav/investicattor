@@ -80,12 +80,12 @@ dialog > section > div {
 	opacity: 25%;
 }
 
-#catquote {
+.catquote {
 	font-style: italic;
 	background: aliceblue;
 	border: 1px dashed blue;
 }
-#catquote img {
+.catquote img {
 	height: 1.25em;
 	vertical-align: text-top;
 	margin-left: 0.5em;

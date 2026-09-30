@@ -63,17 +63,42 @@ A quick jump and you're over the fence; the back door is open and you can visit 
 
 ### Neighbour: Canine
 
-Paragraph one about canine
+Ah, a dog. Not a fan; this obnoxious creature insists on coming over and saying hello. With that disgusting
+canine slobber. Ugh. Humans call it "friendly" but what do they know.
 
-Para two
+This house is near enough that someone might have seen something - or even snuck over to steal the tuna.
+The [dog's food bowl](dogbowl) could have relevant food in it; and there might be a bag of cans hidden in
+the [kitchen](kitchen) or perhaps [upstairs](upstairs). The [primary human of this house](human) might have
+something to tell you, too. Maybe a confession.
+
+This is one of the few houses in the street that birds never land on. There must be a reason for that. Might
+have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog].
 
 ### Neighbour: Smelly
 
-Smells of diesel.
+There is a kennel here that holds a big thing, not a car but a... right, they call it a [boat](boat). The
+[humans](humans) love to spend time with it, playing music on the boat (at least, I think they call it music)
+and creating the smell of diesel. It's not something that I would like to live with, but humans, what can you
+say.
+
+There are no small humans in this house, only full size ones. They have never given us food, but I did once
+sneak into that boat thing when it came back, and found some fishy water all over the place. That was a good
+day.
+
+Inside the house, a [cabinet](cabinet) stands ajar, and a [couch](couch) seems to be playing hide-and-seek
+with some kind of electronic device. Not a [laser](laser), more's the pity.
+
+On top of the house is a [bird's nest](nest) and a metal [rooster](windvane).
 
 ### Neighbour: Littered
 
-Lots of detritus.
+Someone here either loves creating fun places to run and jump, or doesn't care what they throw out. There's
+piles and piles of [stuff](stuff) (that's a technical and legal term, I'll have you know), all colours, all
+shapes, all sizes. There's often something that smells like food coming from the [open window](window), and
+today is no different; maybe the [local human](human) stole the tuna for future use!
+
+Underneath the house is a [basement](basement) with enough room for quite a few stolen cans. The top of the
+house is [all black](solarheater) and burns your paws.
 
 ### Fish-and-chippery
 
@@ -84,5 +109,9 @@ Most of the shop is dominanted by the [counter](counter) which has humans [in fr
 There are some other humans [eating at the tables](diners). There's also several [footprints](footprints) on the floor.
 
 ## Submit your findings
+
+(Not yet written. Here you would report back to your human at the police station, identifying the criminal.)
+
+(Congrats! You've reached the end of the story as written.)
 
 ## Footer
