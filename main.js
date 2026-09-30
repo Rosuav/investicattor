@@ -1,5 +1,7 @@
 import {choc, replace_content, lindt, DOM, on, apply_fixes} from "https://rosuav.github.io/choc/factory.js";
-const {BUTTON, DIALOG, DIV, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
+const {A, BUTTON, DIALOG, DIV, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
+
+const enforce_minimums = true; //Set to True for publication, but False for testing lets us skip through quicker
 
 document.body.appendChild(replace_content(null, DIALOG({id: "inspectdlg"}, SECTION([
 	HEADER([H3("Inspect"), DIV([BUTTON({type: "button", class: "dialog_cancel"}, "x")])]),
@@ -227,7 +229,7 @@ const investigate_full = {
 			//Possible suspect: A staff member ran out of fish, bought more, and got misdelivery of the cans.
 			"They're very busy, and you're a little apprehensive about the kind of unfriendly welcome you might get.",
 		]),
-		diners: () => [
+		diners: () => [ //extcall
 			//Never a suspect. This is JUST a red herring.
 			P("You recognize her. She's a doctor named Lyn, and she likes cats."),
 			P([
@@ -240,8 +242,9 @@ const investigate_full = {
 				"refuses to give you any, but you can definitely smell it from down here.",
 			]),
 			P([
-				"Mmmmm, herring. Delicious food, delicious food. This one seems to be slathered in tomato sauce, ",
-				"rather than being eaten plain with salt. Not that there's anything wrong with tomatoes of course; ",
+				"Mmmmm, herring. Delicious food, delicious food. This one seems to be ",
+				A({href: "red-herring.png", target: "_blank"}, "slathered in tomato sauce"),
+				", rather than being eaten plain with salt. Not that there's anything wrong with tomatoes of course; ",
 				"but you like the grease and fish much more.",
 			]),
 			P([
@@ -310,8 +313,7 @@ repaint();
 
 on("click", "[data-dest]", e => {
 	//Travel to a new location
-	console.log((here.time_spent||0), (loc?.time_min||0));
-	if ((here.time_spent||0) < (loc?.time_min||0)) {
+	if (enforce_minimums && (here.time_spent||0) < (loc?.time_min||0)) {
 		replace_content("#dontgoyet", [
 			P([
 				"You've hardly investigated enough here! Once you leave, there won't be time to come back. We have ",
@@ -320,7 +322,8 @@ on("click", "[data-dest]", e => {
 				` ${loc.time_limit - here.time_spent} time left and should really investigate
 				at least ${loc.time_min - here.time_spent} more before we go.`,
 			]),
-		]);		DOM("#dontgoyetdlg").showModal();
+		]);
+		DOM("#dontgoyetdlg").showModal();
 		return;
 	}
 	state.scene = e.match.dataset.dest;
