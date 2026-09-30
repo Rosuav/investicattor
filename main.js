@@ -52,8 +52,8 @@ const locations = {
 		dest: "The Crime Scene", //Label for the button that you click to get here
 		markdown: "part-two-the-crime-scene",
 		time_limit: "Amount of investigation time available in this location",
-		time_min: "Minimum investigation before the travel buttons unlock",
-		//(For the tutorial, both of them are forced to be equal to the number of investigatables.)
+		//(For the tutorial, guaranteed to be equal to the number of investigatables.)
+		time_min: 4, //Minimum investigation before the travel buttons unlock
 	},
 	shop: {
 		dest: "Local shop",
@@ -131,7 +131,7 @@ const investigate_basic = {
 	},
 };
 //For the tutorial, you are always both allowed and required to investigate everything.
-locations.crimescene.time_limit = locations.crimescene.time_min = Object.keys(investigate_basic.crimescene).length;
+locations.crimescene.time_limit = Object.keys(investigate_basic.crimescene).length;
 
 //Unlike basic investigation, these are functions, and may manipulate state.
 //(Decrementing time is done automatically.)
