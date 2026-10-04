@@ -183,34 +183,65 @@ Not every human obeys the law. Some of them think their own dogs are more import
 Frank and Stan can without doubt be charged with aggravated assault on the senses, and maybe also with
 theft of tuna.
 
+* Their [monster](monster) should be impounded as evidence, if only to silence it. It may have a can opener on board.
+* [Patato](patato) can, if convinced, testify against them.
+* Ask [Alice](alice) what time she first heard the Monster roaring.
+
 ### Accuse: Patato
 
 Concealing stolen tuna is itself a crime.
+
+* Getting [a confession](patato) will help here.
+* Believe it or not, even a dog can be of use. Get testimony from [Rex](rex).
 
 ### Accuse: Windvane
 
 Evil, evil poultry.
 
+* I shall testify against this [myself](myself).
+* Maybe we can trick [Rex](rex) into chasing it off the roof?
+
 ### Accuse: James
 
 James 'The Cook' has no ethics and no generosity towards cats. He most likely took the tuna.
 
+* That [weird black part](solarheater) of the roof is guilty, I swear
+* The [basement](basement) is locked - we'll need a search warrant.
+* Extract a confession from [James](james) under threat of chin rubs.
+
 ### Accuse: The Stuff
 
 Technically it's not a crime for tuna to get lost, but with Harry's help, we can get it back.
+
+* Get a search warrant and have Harry [poke through the stuff](stuff) for us.
+* Using the same search warrant, inspect [the basement](basement).
+* Having a [window](window) so high off the ground is highly suspicious.
 
 ### Accuse: Judy
 
 It's unethical to sell someone a 'piece of fish' that came from a can of chopped tuna, especially when
 doing so deprives a cat of essential food.
 
+* Working at a fish-and-chippery means that Judy knows a thing or two about fish. [Bring her in for questioning.](judy)
+* The other customers will be able to tell us what they've seen - ask [Lyn](lyn) for testimony.
+* That thing you found on the [counter](counter) speaks for itself.
+* The [footprints](footprints) clearly belonged to Judy.
+
 ### Accuse: Dorothy
 
 A voracious eater and probably not content with just one meal of fish per day, she very likely took our client's tuna.
 
+* [Bring her in for questioning](dorothy) and see if she confesses.
+* Ask [another customer](lyn) if she noticed signs of tuna nommage.
+* The [footprints](footprints) clearly belonged to Dorothy.
+
 ### Accuse: Lyn
 
 Imagine if she were accusing you of something. The 'What if?' would make for an interesting investigation!
+
+* Talk to [Ricebot](ricebot) - we could use some emotional support right now.
+* [Ask Lyn](lyn) about her work at the Foundation and the extent to which tuna is involved.
+* The [footprints](footprints) might be older than they look, but so is Lyn.
 
 ### Accuse: Nobody
 
@@ -218,5 +249,7 @@ Perhaps nobody was actually at fault. Sometimes, things just happen. We should t
 about following this up further.
 
 I know it seems impossible but maybe we can check the [food bowl](foodbowl) and show that there's not been a crime??
+
+We could also ask [Alice](alice) and [Bob](bob), although they'll probably start telling us a [lengthy story](https://xkcd.com/1323/).
 
 ## Footer
