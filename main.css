@@ -30,6 +30,9 @@ h2,h3,h4,h5,h6 {
 [data-investigate].seen {
 	background: #eff;
 }
+.outtatime [data-investigate]:not(.seen) {
+	border: 1px solid transparent; /* Flatten the buttons when you're out of time */
+}
 
 dialog {
 	max-width: 48rem; /* Ideally, keep this a bit smaller than the max-width of the main-content in the theme */

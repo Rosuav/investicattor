@@ -465,7 +465,7 @@ function repaint() {
 			]),
 		])),
 		render_scene[state.scene](),
-	]);
+	]).classList.toggle("outtatime", enforce_time_limits && (here.time_spent||0) >= (loc?.time_limit||1));
 }
 repaint();
 
