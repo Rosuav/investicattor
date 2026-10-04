@@ -7,9 +7,9 @@
 
 As a cat in a police station, you have three core duties: Sleep in any box left unguarded, inspect visitors, and make sure the tuna is of
 proper quality. Thus it is with great horror that you learn from one of your colleagues that the tuna supply at her house has disappeared!
-You try to get your human to take notice, desperately informing him that whatever irrelevant human work he's doing can wait, but he just
-won't budge. He even has the gall to tell you that there's no proof a crime even happened! Well, we'll show him, you and I. You know what
-they say - if you want something done right, you have to do it yourself.
+You try to get your human ("Harry" to his friends) to take notice, desperately informing him that whatever irrelevant human work he's doing
+can wait, but he just won't budge. Harry even has the gall to tell you that there's no proof a crime even happened! Well, we'll show him,
+you and I. You know what they say - if you want something done right, you have to do it yourself.
 
 We'll write our notes here under the title "The Case of the Missing Tuna". Titles like that work for mice and humans so they should work
 for us. It is time for us to step into the role of...
@@ -18,18 +18,18 @@ for us. It is time for us to step into the role of...
 
 ## Part Two: The Crime Scene
 
-A family home. A cat, practically starving to death, because this morning's meal of tuna was not provided. (No, the dry food does
-not count. I cannot survive on that stuff. Though I will eat it. Of course.) The delivery of tuna to the house was interrupted; it
-MUST be grand theft!
+A family home. A cat named Misty, practically starving to death, because this morning's meal of tuna was not provided. (No, the dry
+food does not count. I cannot survive on that stuff. Though I will eat it. Of course.) The delivery of tuna to the house was
+interrupted; it MUST be grand theft!
 
-The cat's [food bowl](foodbowl) stands horrifyingly empty. That would be a good place to start investigating.
+Misty's [food bowl](foodbowl) stands horrifyingly empty. That would be a good place to start investigating.
 
 There are several places to investigate. Some of them may be relevant; others will be nothing but a waste of time. It is up to you
 which things to look at.
 
 * [Kitchen cupboard](cupboard)
-* [Adult human](adult)
-* [Smaller human](child)
+* [Adult human](bob)
+* [Smaller human](alice)
 * [Vase on mantlepiece](vase)
 * [Refrigerator](fridge)
 
@@ -47,7 +47,7 @@ supplied with tuna. This is usually done in the form of cans. Those are annoying
 to keep their fingers clean (for some reason they don't seem to just lick it all off like we do), and which, when they
 finally deign to serve us, they open, to reveal the food inside.
 
-Near the front of the shop is a [human](shopkeeper) who may have caused us to have no tuna. Further back are displays
+Near the front of the shop is a [human](tomas) who may have caused us to have no tuna. Further back are displays
 of food, including [distasteful vegetables](yuck_vegetable), [interesting vegetables](crisp_vegetable), [smelly boxes](pungent_boxes),
 and of course, [tuna cans](tuna).
 
@@ -67,21 +67,22 @@ A quick jump and you're over the fence; the back door is open and you can visit 
 
 ### Neighbour: Canine
 
-Ah, a dog. Not a fan; this obnoxious creature insists on coming over and saying hello. With that disgusting
-canine slobber. Ugh. Humans call it "friendly" but what do they know.
+Ah, a dog. Not a fan; this obnoxious creature insists on coming over and saying hello. With that disgusting canine slobber.
+Ugh. Humans call it "friendly" but what do they know. Anyhow. His human refers to him as Rex, which is a typically
+pretentious dog name.
 
 This house is near enough that someone might have seen something - or even snuck over to steal the tuna.
 The [dog's food bowl](dogbowl) could have relevant food in it; and there might be a bag of cans hidden in
-the [kitchen](kitchen) or perhaps [upstairs](upstairs). The [primary human of this house](human) might have
+the [kitchen](kitchen) or perhaps [upstairs](upstairs). The [primary human of this house](gruff) might have
 something to tell you, too. Maybe a confession.
 
 This is one of the few houses in the street that birds never land on. There must be a reason for that. Might
-have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog](dog).
+have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog](rex).
 
 ### Neighbour: Smelly
 
-There is a kennel here that holds a big thing, not a car but a... right, they call it a [boat](boat). The
-[humans](humans) love to spend time with it, playing music on the boat (at least, I think they call it music)
+There is a kennel here that holds a big thing, not a car but a... right, they call it a [boat](monster). The
+[humans](frankstan) love to spend time with it, playing music on the boat (at least, I think they call it music)
 and creating the smell of diesel. It's not something that I would like to live with, but humans, what can you
 say.
 
@@ -99,7 +100,7 @@ On top of the house is a [bird's nest](nest) and a metal [rooster](windvane).
 Someone here either loves creating fun places to run and jump, or doesn't care what they throw out. There's
 piles and piles of [stuff](stuff) (that's a technical and legal term, I'll have you know), all colours, all
 shapes, all sizes. There's often something that smells like food coming from the [open window](window), and
-today is no different; maybe the [local human](human) stole the tuna for future use!
+today is no different; maybe the [local human](james) stole the tuna for future use!
 
 Underneath the house is a [basement](basement) with enough room for quite a few stolen cans. The top of the
 house is [all black](solarheater) and burns your paws.
@@ -119,59 +120,59 @@ There are some other humans [eating at the tables](diners). There's also several
 Everything has been thoroughly investigated. It's time to tell your human who is responsible for this awful deed. Check
 your notes here, and choose who to accuse.
 
-* At the crime scene, the [cat's primary human](owner)? The [smaller human](child)?
-* At the shop, the [cashier](shopkeeper)? Or [one of the other customers](customer)?
-* One of the neighbours? The [dog](dog) or [his owner](dogowner)? The [boat people](boatpeople) or the [rooster](windvane)?
-  The [cooking human](cook) or possibly it got lost in the [stuff](stuff)?
-* The [fish-and-chippery staff](fissionstaff)? One of the [people eating](diners)?
+* At the crime scene, [Bob the cat's primary human](bob)? Or [Alice, the smaller human](alice)?
+* At the shop, [Tomas the cashier](tomas)? Or [Zeke the customer](zeke)?
+* One of the neighbours? [Rex, the ugly canine](rex) or [his owner, Mr Gruff](gruff)? The [boat people, Frank and Stan](frankstan),
+  their friend [Patato](patato) or the [rooster](windvane)? Perhaps [James 'The Cook'](james) or possibly it got lost in the [stuff](stuff)?
+* The [fish-and-chippery employee, Judy](judy)? One of the people eating - [Dorothy](dorothy) or [Lyn](lyn)?
 
 Or perhaps [no crime has been committed](nocrime) and the humans were right?
 
-### Accuse: Owner
+### Accuse: Bob
 
-It's the fault of the cat's primary human. But simply knowing that isn't enough. How do we convince the our humans?
+Bob, the cat's primary human, failed in his core duties. But simply knowing that isn't enough. How do we convince the our humans?
 
 * Show them the [empty food bowl](foodbowl)
 * Take them to the shop and show that [tuna IS available](shoptuna)
-* Ask the [young human](child) to testify
+* Ask [Alice](alice) to testify
 * Get a search warrant for the [fridge and cupboards](fridge)
 
-### Accuse: Child
+### Accuse: Alice
 
-It was the girl's fault. She was supposed to put food in the bowl. Do we know this for sure?
+It was the young girl's fault. She was supposed to put food in the bowl. Do we know this for sure?
 
-* Ask the [adult human](owner) to testify
-* Ask the [young human](child) to tell us what she knows
+* Ask [Bob](bob) to testify
+* Ask [Alice](alice) to tell us what she knows
 * Search the [fridge](fridge) for signs of tuna
 
-### Accuse: Shopkeeper
+### Accuse: Tomas
 
 A tuna-selling shop is supposed to sell tuna. Why did this one not?
 
 * Point to the [empty tuna shelves](tunashelves)
-* Get a confession from the [shopkeeper](shopkeeper) directly
+* Get a confession from [Tomas](tomas) directly
 
-### Accuse: Customer
+### Accuse: Zekes
 
 It was that customer, walking around, pretending to be innocent. But we can see right through them!
 
-* Cite the [customer](customer)'s behaviour
+* Cite [Zeke's](zeke) behaviour
 * Show that the [shelves](shelves) had been restocked in time for the investigation
 
-### Accuse: Dog
+### Accuse: Rex
 
 Dogs can eat tuna, but by the law of the felines, they are supposed to permit cats to have it all first.
 
-* The contents of the [dog's bowl](dogbowl) will prove this.
-* The [dog's confession](dog) demonstrates guilt.
+* The contents of [Rex's bowl](dogbowl) will prove this.
+* And of course, [Rex's confession](rex) demonstrates guilt.
 
-### Accuse: Dog's owner
+### Accuse: Mr Gruff
 
 Not every human obeys the law. Some of them think their own dogs are more important than other people's cats.
 
-* That [strange thing](book) in the human's hands
-* Extract a confession from the [dogowner](man himself).
-* Ask the [dog](dog) to spill the beans.
+* That [strange thing](book) in his hands
+* Extract a confession from the [man himself](gruff).
+* Ask [Rex](rex) to spill the beans.
 
 ### Accuse: Boat people
 ### Accuse: Rooster

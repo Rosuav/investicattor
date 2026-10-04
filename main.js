@@ -111,13 +111,13 @@ const investigate_basic = {
 	crimescene: {
 		foodbowl: P("An empty food bowl. I don't know how the humans expect a cat to survive without tuna."),
 		cupboard: P("A kitchen cupboard at floor level. It's ajar; you could nudge it open with your nose if you want."),
-		adult: P("A full size human that regularly enters and leaves this house as if it owns the place."),
-		child: P("A reduced-size human that stays here. Talks to us with a high pitched voice."),
+		bob: P("A full size human named Bob that regularly enters and leaves this house as if it owns the place."),
+		alice: P("A reduced-size human that stays here. Talks to us with a high pitched voice. Her father calls her Alice."),
 		vase: P("On the mantlepiece, there's a vase. It would make a delicious sound if it hit the ground."),
 		fridge: P("The fridge, a place where the humans keep food. It is closed."),
 	},
 	shop: {
-		shopkeeper: P("Looks like a person. Hides behind some clanking mechanical stuff. Our humans go here before leaving the shop."),
+		tomas: P("Looks like a person. Name badge says 'Tomas'. Hides behind some clanking mechanical stuff. Our humans go here before leaving the shop."),
 		yuck_vegetable: P("Don't know what this vegetable is but it smells bad, tastes worse, and isn't even good for expelling hairballs."),
 		crisp_vegetable: P("I'd love to stop and chew on this for a bit, but we have to find the tuna."),
 		pungent_boxes: P("I think these boxes contain food. Smells ... interesting."),
@@ -132,16 +132,16 @@ const investigate_basic = {
 		footprints: P("There are footprints on the floor! Not yours! They may be human!"),
 	},
 	neighbour_canine: {
-		dogbowl: P("The dog's bowl usually has some food in it. What is it today?"),
+		dogbowl: P("Rex's bowl usually has some food in it. What is it today?"),
 		kitchen: P("There are several cupboards and cabinets that you could poke your nose into."),
 		upstairs: P("Doesn't look like there's anybody upstairs."),
-		human: P("The human is curently staring at one of those rustling things they call a book."),
+		gruff: P("The human - Mr Gruff, if you were to deign to give him a name - is curently staring at one of those rustling things they call a 'book'."),
 		roof: P("The roof is some kind of weird shade of red. Wait, is that the colour humans call red?"),
-		dog: P("The dog's not here at the moment, but his usual spot is thoroughly trodden into hard dirt."),
+		rex: P("Rex is not here at the moment, but his usual spot is thoroughly trodden into hard dirt."),
 	},
 	neighbour_smelly: {
-		boat: P("It's currently making disgusting noises - is this what they call music? Can't be very interesting."),
-		humans: P("They're playing with that boat thing again. They don't seem to have noticed a cat approach."),
+		monster: P("It's currently making disgusting noises - is this what they call music? Can't be very interesting."),
+		frankstan: P("They're playing with that boat thing again. They don't seem to have noticed a cat approach."),
 		cabinet: P("Looks like a perfect hiding place for stolen tuna!"),
 		couch: P("One of the humans is sitting here, saying 'where is that silly phone', only he's not saying 'silly'."),
 		laser: P("Lasers are the ultimate weapon for cats. If we could catch one, it would be the best day ever."),
@@ -151,7 +151,7 @@ const investigate_basic = {
 	neighbour_littered: {
 		stuff: P("A lot of stuff. If there's any tuna in here, it's been here for years."),
 		window: P("The window is too high to get through, but you can definitely smell food being made on the other side."),
-		human: P("The human is making food. You approach, hoping either to learn about stolen tuna, or about dinner."),
+		james: P("James is making food. You approach, hoping either to learn about stolen tuna, or about dinner."),
 		basement: P("It's locked."),
 		solarheater: P("Massive black area all over the roof - no idea why the humans installed it."),
 	},
@@ -175,19 +175,19 @@ const investigate_full = {
 				"could tear to pieces if you wanted to make a mess, and no cans of tuna. Disappointing.",
 			]),
 		],
-		adult: () => [
+		bob: () => [
 			P([
 				//Suspect: The adult failed to provide food for no reason.
 				"Humans normally are expected to refill food bowls. It's their most important task, and ",
-				"this one is not doing it. There must be a reason. Might be that the human's broken.",
+				"this one is not doing it. There must be a reason. Might be that Bob's broken.",
 			]),
 		],
-		child: () => [
+		alice: () => [
 			P([
 				//Increased time cost?
-				"As you approach the small human, it reaches down to pick you up. You speak loudly, ",
-				"insisting that you do not want uppies right now, but it tries to pick you up anyway. ",
-				"There's a short chase around the house before the human gives up. What a waste of time.",
+				"As you approach her, she reaches down to pick you up. You speak loudly, ",
+				"insisting that you do not want uppies right now, but Alice tries to pick you up anyway. ",
+				"There's a short chase around the house before she gives up. What a waste of time.",
 			]),
 		],
 		vase: () => [
@@ -207,7 +207,7 @@ const investigate_full = {
 		],
 	},
 	shop: {
-		shopkeeper: () => [
+		tomas: () => [
 			P([
 				//Suspect: The shopkeeper refused sale.
 				//Possible evidence: Empty shelves, no tuna in stock
@@ -236,6 +236,7 @@ const investigate_full = {
 		],
 		customers: () => P([
 			//For now just a red herring but this might give you some other suspects to investigate.
+			//Possible suspect: Customer named Zeke, who bought all of the tuna for his own cat (how dare he).
 			//"It's just a human. Probably useless.", //use this somewhere
 			"There are a few humans around. Interviewing them has resulted in zero responses, but two people ",
 			"rubbed by head, so that was something.",
@@ -247,11 +248,14 @@ const investigate_full = {
 		]),
 		customers: () => P([
 			//Possible suspect: A customer seen here who eats far too much tuna and stole all the cans.
+			//Her name will be Dorothy. No relation to the one from Oz.
 			"You walk up to each of the humans, rub yourself against their legs, and determine that they're all innocent.",
 		]),
 		staff: () => P([
 			//Possible suspect: A staff member ran out of fish, bought more, and got misdelivery of the cans.
-			"They're very busy, and you're a little apprehensive about the kind of unfriendly welcome you might get.",
+			//Her name will be Judy.
+			"They're very busy, and you're a little apprehensive about the kind of unfriendly welcome you might get. ",
+			"Anyhow, entertaining as it might be to trip the Fish Friar or the Chip Monk, it wouldn't help you find the tuna.",
 		]),
 		diners: () => [ //extcall
 			//Never a suspect. This is JUST a red herring.
@@ -283,7 +287,7 @@ const investigate_full = {
 	neighbour_canine: {
 		dogbowl: () => P([
 			"Looks like that weird meaty mash that they get out of cans. Not tuna, but if you're ",
-			"hungry enough, it's food. The dog always seems hungry enough. Or maybe he likes it.",
+			"hungry enough, it's food. Rex always seems hungry enough. Or maybe he likes it.",
 		]),
 		kitchen: () => P([
 			//Possible evidence
@@ -292,22 +296,23 @@ const investigate_full = {
 			"and in the seventh, some canned food. Interesting. Not tuna though.",
 		]),
 		upstairs: () => P("A quick trot up the stairs confirms it - there's nobody there. He's downstairs."),
-		human: () => P([
+		gruff: () => P([
 			//Possible suspect
-			"The human is reading from one of those 'book' things, probably very exciting to those small ",
+			"Mr Gruff is reading from one of those 'book' things, probably very exciting to those small ",
 			"brains that humans possess. You sidle up to him and gently request head pats. He obliges.",
 		]),
 		roof: () => P("Never been good at identifying roofing types. Is that the one they call slate? No, tiles. Or something."),
-		dog: () => P("You spend some time marking the dog's favourite spot as your territory. Not that the dog cares."),
+		rex: () => P("You spend some time marking Rex's favourite spot as your territory. Not that he's gonna care."),
 	},
 	neighbour_smelly: {
-		boat: () => P([
-			"The humans are playing with their boat thing. It's making all those weird rumbling noises that ",
+		monster: () => P([
+			//Refer to it somewhere as "Frank and Stan's Monster"
+			"Frank and Stan are playing with their boat thing. It's making all those weird rumbling noises that ",
 			"the humans love so much. No sign of stolen tuna, and you really don't want to stick around too long ",
 			"with this much music happening. The humans are preoccupied and don't respond to you.",
 		]),
-		humans: () => P([
-			"I can't stand the music that these humans play on their boat, for hours and hours at a time. ",
+		frankstan: () => P([
+			"I can't stand the music that Frank and Stan play on their boat, for hours and hours at a time. ",
 			"There's no sign of stolen tuna on, around, or near the boat anyway, and it's too uncomfortable ",
 			"to stay here and ask for head pats.",
 		]),
@@ -315,11 +320,18 @@ const investigate_full = {
 			//Possible evidence
 			"Alas, no cans of tuna in here. Just some dusty books.",
 		]),
-		couch: () => P([
-			//Possible suspect
-			"Whatever the issue is with that phone, it's making the human extremely frustrated and displeased. ",
-			"If you cared more, you could offer some comfort, but you don't, so you don't.",
-		]),
+		couch: () => [
+			P([
+				//Possible suspect (long shot)
+				"Whatever the issue is with that phone, it's making Patato extremely frustrated and displeased. ",
+				"If you cared more, you could offer her some comfort, but you don't, so you don't.",
+			]),
+			P([
+				"You muse for a while on the peculiarities of human names. Why would you name someone after a ",
+				"vegetable? The other humans call her 'Pat' for short, which makes sense I guess, but really, ",
+				"why would she be called Pat-ato?",
+			]),
+		],
 		laser: () => [
 			P("You fantasize for a while about lasers."),
 			A({href: "https://xkcd.com/729/", target: "_blank", title: "It's a lasing cat-vity! - XKCD"},
@@ -342,10 +354,10 @@ const investigate_full = {
 		window: () => P([
 			"You jump at the window and smack your head into the glass. The open part is way too high to get through.",
 		]),
-		human: () => P([
+		james: () => P([
 			//Possible suspect
 			"Whether there's tuna here or not, there's definitely delicious food being made. You take advantage of the ",
-			"open side door and sidle up to the human, hoping for a sample. One is dropped to you - perhaps not ",
+			"open side door and sidle up to James, hoping for a sample. One is dropped to you - perhaps not ",
 			"intentionally but that makes no difference - and you devour it happily. Now then. About that investigation.",
 		]),
 		basement: () => [
