@@ -27,10 +27,17 @@ const main = document.body.appendChild(choc.MAIN({class: "main-content"}));
 //place in the DOM. Don't do that with any structural elements (which should all land in markdown[""]).
 
 function transform_links(el) {
-	if (el.tagName === "A") return el.replaceWith(choc.BUTTON( //TODO: Don't do this if it's actually an external link
-		{"data-investigate": el.getAttribute("href")},
-		[...el.childNodes],
-	));
+	if (el.tagName === "A") {
+		//External links get flipped to a new tab but otherwise unchanged.
+		if (el.getAttribute("href").startsWith("https://")) {
+			el.target = "_blank";
+			return;
+		}
+		return el.replaceWith(choc.BUTTON(
+			{"data-investigate": el.getAttribute("href")},
+			[...el.childNodes],
+		));
+	}
 	[...el.children].forEach(transform_links);
 }
 
