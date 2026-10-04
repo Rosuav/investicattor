@@ -85,6 +85,7 @@ const locations = {
 		time_min: 1,
 	},
 	accuse: {time_limit: 1},
+	evidence: {time_limit: 2}, //Currently there will always be exactly two pieces of evidence. This may change.
 };
 const all_locations = Object.keys(locations); //The order in here defines the order of the buttons.
 let loc; //Same as locations[state.scene]
@@ -160,6 +161,11 @@ const investigate_basic = {
 	accuse: {
 		bob: P("Misty's primary human is also her primary source of food. It is his duty."),
 		alice: P("The job of filling Misty's food bowl can be delegated to Alice."),
+	},
+	//DENOUMENT - Phase 2: Evidence
+	evidence: {
+		foodbowl: P("Misty's food bowl is empty."),
+		shoptuna: P("The shop does, in fact, carry tuna, and was not at fault."),
 	},
 };
 //For the tutorial, you are always allowed to investigate everything.
@@ -385,6 +391,14 @@ const investigate_full = {
 			"The bowl's emptiness is the fault of the small human named Alice. Young though she be, she ought to know how to feed a cat.",
 		]),
 	},
+	evidence: {
+		foodbowl: () => P([
+			"The food bowl's emptiness speaks for itself. But for the sake of police work, we need to bag it as evidence.",
+		]),
+		shoptuna: () => P([
+			"You drag Harry to the tuna shop and demonstrate that cans ARE available.",
+		]),
+	},
 };
 
 function TRAVELBUTTONS(dest) {
@@ -405,6 +419,23 @@ const render_scene = {
 	accuse() {return [
 		H2("Police Station"),
 		...markdown["who-committed-the-crime"],
+		DIV({class: "travelbuttons"}, [
+			BUTTON({type: "button", "data-dest": "evidence", disabled: true}, "Make your accusation"),
+		]),
+	]},
+	evidence() {return [
+		H2("Police Station"),
+		...markdown["accuse-" + here.accused],
+		DIV({class: "travelbuttons"}, [
+			BUTTON({type: "button", "data-dest": "results", disabled: here.time_spent < loc.time_limit}, "Conclude the case"),
+		]),
+	]},
+	results() {return [
+		H2("Police Station"),
+		P("... TODO: Show whether you were right ..."),
+		DIV({class: "travelbuttons"}, [
+			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
+		]),
 	]},
 }
 //The investigable locations are easy to render, no need to write the code for them all
@@ -483,8 +514,12 @@ on("click", "[data-investigate]", e => {
 	const seen = !!detail;
 	if (investigable && !seen) fullinvestigate = e.match;
 	DOM("#inspect-full").hidden = seen;
-	const labels = ["(out of time)", "Inspect fully", "(already accused)", "Accuse"];
-	replace_content("#inspect-full", labels[investigable + (state.accuse ? 2 : 0)]).disabled = !investigable;
+	const labels = ["(out of time)", "Inspect fully", "(already accused)", "Accuse", "(no more to submit)", "Submit evidence"];
+	replace_content("#inspect-full", labels[
+		investigable
+		+(state.accuse ? 2 : 0)
+		+(state.evidence ? 2 : 0)
+	]).disabled = !investigable;
 	DOM("#inspectdlg").showModal();
 });
 
@@ -498,6 +533,11 @@ on("click", "#inspect-full", e => {
 		investigate_full[state.scene][item](),
 	];
 	fullinvestigate.classList.add("seen");
+	if (state.accuse && !state.evidence) {
+		state.scene = "evidence";
+		here = state[state.scene] = {investigated: { }, time_spent: 0, accused: item};
+		loc = locations[state.scene];
+	}
 	repaint();
 	fullinvestigate.click(); //Close and re-show the dialog, now with more info.
 });

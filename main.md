@@ -115,6 +115,8 @@ There are some other humans [eating at the tables](diners). There's also several
 
 ## Police Station
 
+(Note: The accusation IDs need to match the Markdown heading IDs, and reused evidence IDs need to refer to the same evidence.)
+
 ### Who committed the crime?
 
 Everything has been thoroughly investigated. It's time to tell your human who is responsible for this awful deed. Check
@@ -152,7 +154,7 @@ A tuna-selling shop is supposed to sell tuna. Why did this one not?
 * Point to the [empty tuna shelves](tunashelves)
 * Get a confession from [Tomas](tomas) directly
 
-### Accuse: Zekes
+### Accuse: Zeke
 
 It was that customer, walking around, pretending to be innocent. But we can see right through them!
 
