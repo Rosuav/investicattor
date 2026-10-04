@@ -5,11 +5,16 @@
 
 ## Part One: The Shocking Discovery
 
-Discovery: Tuna is missing. Lots of it. Like, enough to make a real meal out of. Maybe even enough for the humans to care.
+As a cat in a police station, you have three core duties: Sleep in any box left unguarded, inspect visitors, and make sure the tuna is of
+proper quality. Thus it is with great horror that you learn from one of your colleagues that the tuna supply at her house has disappeared!
+You try to get your human to take notice, desperately informing him that whatever irrelevant human work he's doing can wait, but he just
+won't budge. He even has the gall to tell you that there's no proof a crime even happened! Well, we'll show him, you and I. You know what
+they say - if you want something done right, you have to do it yourself.
 
-Human investigator declines to dig into it. No proof that a crime has even happened. Tells cat "if you think it's so important, YOU investigate".
+We'll write our notes here under the title "The Case of the Missing Tuna". Titles like that work for mice and humans so they should work
+for us. It is time for us to step into the role of...
 
-Cat takes him up on it. Tuna is just that important.
+.... THE INVESTI-CATTOR!
 
 ## Part Two: The Crime Scene
 
@@ -17,9 +22,10 @@ A family home. A cat, practically starving to death, because this morning's meal
 not count. I cannot survive on that stuff. Though I will eat it. Of course.) The delivery of tuna to the house was interrupted; it
 MUST be grand theft!
 
-The cat's [food bowl](foodbowl) stands horrifyingly empty. That would be a good place to start investigating!
+The cat's [food bowl](foodbowl) stands horrifyingly empty. That would be a good place to start investigating.
 
-Places to investigate:
+There are several places to investigate. Some of them may be relevant; others will be nothing but a waste of time. It is up to you
+which things to look at.
 
 * [Kitchen cupboard](cupboard)
 * [Adult human](adult)
@@ -27,12 +33,12 @@ Places to investigate:
 * [Vase on mantlepiece](vase)
 * [Refrigerator](fridge)
 
-Here in the crime scene itself, you will have time to investigate everything; however this will not always be
-the case. Keep an eye on the clocks to see how much more time you have!
+*Here in the crime scene itself, you will have time to investigate everything; however this will not always be
+the case. Keep an eye on the clocks to see how much more time you have!*
 
 ## Part Three: Exploring
 
-Each location here can be visited precisely once; the order is up to the player.
+(Each location here can be visited precisely once; the order is up to the player.)
 
 ### Shop
 
@@ -46,8 +52,6 @@ of food, including [distasteful vegetables](yuck_vegetable), [interesting vegeta
 and of course, [tuna cans](tuna).
 
 There are several [other humans](customers) walking around. You could get in front of one if you wanted.
-
-### Police Station (where my human works)
 
 ### Neighbour: Left
 
@@ -72,7 +76,7 @@ the [kitchen](kitchen) or perhaps [upstairs](upstairs). The [primary human of th
 something to tell you, too. Maybe a confession.
 
 This is one of the few houses in the street that birds never land on. There must be a reason for that. Might
-have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog].
+have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog](dog).
 
 ### Neighbour: Smelly
 
@@ -108,10 +112,77 @@ humans, eventually one of them will give me a share! It is only right and fittin
 Most of the shop is dominanted by the [counter](counter) which has humans [in front of it](customers) and [behind it](staff).
 There are some other humans [eating at the tables](diners). There's also several [footprints](footprints) on the floor.
 
-## Submit your findings
+## Police Station
 
-(Not yet written. Here you would report back to your human at the police station, identifying the criminal.)
+### Who committed the crime?
 
-(Congrats! You've reached the end of the story as written.)
+Everything has been thoroughly investigated. It's time to tell your human who is responsible for this awful deed. Check
+your notes here, and choose who to accuse.
+
+* At the crime scene, the [cat's primary human](owner)? The [smaller human](child)?
+* At the shop, the [cashier](shopkeeper)? Or [one of the other customers](customer)?
+* One of the neighbours? The [dog](dog) or [his owner](dogowner)? The [boat people](boatpeople) or the [rooster](windvane)?
+  The [cooking human](cook) or possibly it got lost in the [stuff](stuff)?
+* The [fish-and-chippery staff](fissionstaff)? One of the [people eating](diners)?
+
+Or perhaps [no crime has been committed](nocrime) and the humans were right?
+
+### Accuse: Owner
+
+It's the fault of the cat's primary human. But simply knowing that isn't enough. How do we convince the our humans?
+
+* Show them the [empty food bowl](foodbowl)
+* Take them to the shop and show that [tuna IS available](shoptuna)
+* Ask the [young human](child) to testify
+* Get a search warrant for the [fridge and cupboards](fridge)
+
+### Accuse: Child
+
+It was the girl's fault. She was supposed to put food in the bowl. Do we know this for sure?
+
+* Ask the [adult human](owner) to testify
+* Ask the [young human](child) to tell us what she knows
+* Search the [fridge](fridge) for signs of tuna
+
+### Accuse: Shopkeeper
+
+A tuna-selling shop is supposed to sell tuna. Why did this one not?
+
+* Point to the [empty tuna shelves](tunashelves)
+* Get a confession from the [shopkeeper](shopkeeper) directly
+
+### Accuse: Customer
+
+It was that customer, walking around, pretending to be innocent. But we can see right through them!
+
+* Cite the [customer](customer)'s behaviour
+* Show that the [shelves](shelves) had been restocked in time for the investigation
+
+### Accuse: Dog
+
+Dogs can eat tuna, but by the law of the felines, they are supposed to permit cats to have it all first.
+
+* The contents of the [dog's bowl](dogbowl) will prove this.
+* The [dog's confession](dog) demonstrates guilt.
+
+### Accuse: Dog's owner
+
+Not every human obeys the law. Some of them think their own dogs are more important than other people's cats.
+
+* That [strange thing](book) in the human's hands
+* Extract a confession from the [dogowner](man himself).
+* Ask the [dog](dog) to spill the beans.
+
+### Accuse: Boat people
+### Accuse: Rooster
+### Accuse: Cook
+### Accuse: Nobody (lost in pile of stuff)
+### Accuse: Fish-and-chippery
+### Accuse: Diner
+### Accuse: Nobody
+
+Perhaps nobody was actually at fault. Sometimes, things just happen.
+
+I know it seems impossible but maybe we can check the [food bowl](foodbowl) and show that there's not been a crime??
 
 ## Footer
