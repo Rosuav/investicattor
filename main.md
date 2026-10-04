@@ -120,7 +120,7 @@ There are some other humans [eating at the tables](diners). There's also several
 Everything has been thoroughly investigated. It's time to tell your human who is responsible for this awful deed. Check
 your notes here, and choose who to accuse.
 
-* At the crime scene, [Bob the cat's primary human](bob)? Or [Alice, the smaller human](alice)?
+* At the crime scene, [Bob, Misty's primary human](bob)? Or [Alice, the smaller human](alice)?
 * At the shop, [Tomas the cashier](tomas)? Or [Zeke the customer](zeke)?
 * One of the neighbours? [Rex, the ugly canine](rex) or [his owner, Mr Gruff](gruff)? The [boat people, Frank and Stan](frankstan),
   their friend [Patato](patato) or the [rooster](windvane)? Perhaps [James 'The Cook'](james) or possibly it got lost in the [stuff](stuff)?

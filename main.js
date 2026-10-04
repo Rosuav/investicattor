@@ -1,5 +1,5 @@
 import {choc, replace_content, lindt, DOM, on, apply_fixes} from "https://rosuav.github.io/choc/factory.js";
-const {A, BUTTON, DIALOG, DIV, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
+const {A, BUTTON, DIALOG, DIV, H2, H3, HEADER, IMG, P, SECTION, SPAN} = lindt; //autoimport
 
 const enforce_time_limits = true; //Set to True for publication, but False for testing lets us skip through quicker
 
@@ -84,6 +84,7 @@ const locations = {
 		time_limit: 2,
 		time_min: 1,
 	},
+	accuse: {time_limit: 1},
 };
 const all_locations = Object.keys(locations); //The order in here defines the order of the buttons.
 let loc; //Same as locations[state.scene]
@@ -154,6 +155,11 @@ const investigate_basic = {
 		james: P("James is making food. You approach, hoping either to learn about stolen tuna, or about dinner."),
 		basement: P("It's locked."),
 		solarheater: P("Massive black area all over the roof - no idea why the humans installed it."),
+	},
+	//DENOUMENT - Phase 1: Accusations
+	accuse: {
+		bob: P("Misty's primary human is also her primary source of food. It is his duty."),
+		alice: P("The job of filling Misty's food bowl can be delegated to Alice."),
 	},
 };
 //For the tutorial, you are always allowed to investigate everything.
@@ -370,15 +376,24 @@ const investigate_full = {
 			"it's just a roof heater thing. How would it steal tuna??",
 		]),
 	},
+	//DENOUMENT
+	accuse: {
+		bob: () => P([
+			"You point to the empty bowl and the ultimate responsibility of Bob, the primary human for Misty.",
+		]),
+		alice: () => P([
+			"The bowl's emptiness is the fault of the small human named Alice. Young though she be, she ought to know how to feed a cat.",
+		]),
+	},
 };
 
 function TRAVELBUTTONS(dest) {
 	let have_dest = false;
-	(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
+	//(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
 	return DIV({class: "travelbuttons"}, [
 		"Travel to: ",
 		(dest||all_locations).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, locations[d].dest)),
-		!have_dest && BUTTON({type: "button", "data-dest": "denoument"}, "Announce your results"),
+		!have_dest && BUTTON({type: "button", "data-dest": "accuse"}, "Announce your results"),
 	]);
 }
 
@@ -387,11 +402,9 @@ const render_scene = {
 		...markdown["part-one-the-shocking-discovery"],
 		TRAVELBUTTONS(["crimescene"]),
 	]},
-	denoument() {return [
-		...markdown["submit-your-findings"],
-		//TODO: This is where you select a person to accuse (or "no crime happened" but maybe disable that
-		//because the cat will always see that it's a crime to have no tuna), list the supporting evidence,
-		//and submit the case to the human.
+	accuse() {return [
+		H2("Police Station"),
+		...markdown["who-committed-the-crime"],
 	]},
 }
 //The investigable locations are easy to render, no need to write the code for them all
