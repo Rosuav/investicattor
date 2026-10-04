@@ -161,6 +161,19 @@ const investigate_basic = {
 	accuse: {
 		bob: P("Misty's primary human is also her primary source of food. It is his duty."),
 		alice: P("The job of filling Misty's food bowl can be delegated to Alice."),
+		tomas: P("A tuna-seller should sell tuna. Failure to do so is a breach of contract or something."),
+		zeke: P("Did one of the shop's other customers buy out the entire stock of tuna, creating a shortage?"),
+		rex: P("Dogs are not supposed to eat tuna. It's not good for them. At least, not when a cat could have eaten it instead."),
+		"mr-gruff": P("Behind every dog is a human. This one's nice enough to pat us on the head, but that doesn't prove innocence."),
+		"frank-and-stan": P("The horrific noises created by Frank and Stan's monster are themselves a crime against hearing."),
+		patato: P("All those yells about a missing phone - were they concealing the missing tuna?"),
+		windvane: P("I don't trust poultry."),
+		james: P("Cooks need food. Tuna is food. It's possible that he stole Misty's tuna."),
+		"the-stuff": P("Accidents happen and sometimes things simply get lost."),
+		judy: P("The fish-and-chippery usually uses larger pieces of fish but was there a substitution?"),
+		dorothy: P("For some humans, one meal of fish a day just isn't enough. Can't understand it. It's not like cats will eat that much."),
+		lyn: P("I think there's a red herring over there. She works at the impostor factory down the road anyway."),
+		nobody: P("Were we mistaken from the start? Maybe no crime has even been committed!"),
 	},
 	//DENOUMENT - Phase 2: Evidence
 	evidence: {
@@ -383,14 +396,7 @@ const investigate_full = {
 		]),
 	},
 	//DENOUMENT
-	accuse: {
-		bob: () => P([
-			"You point to the empty bowl and the ultimate responsibility of Bob, the primary human for Misty.",
-		]),
-		alice: () => P([
-			"The bowl's emptiness is the fault of the small human named Alice. Young though she be, she ought to know how to feed a cat.",
-		]),
-	},
+	accuse: { }, //There's no additional info after the accusation, it's provided by a separate Markdown scene
 	evidence: {
 		foodbowl: () => P([
 			"The food bowl's emptiness speaks for itself. But for the sake of police work, we need to bag it as evidence.",
@@ -400,10 +406,12 @@ const investigate_full = {
 		]),
 	},
 };
+//Allow the "full investigate" renderer to not crash, but we move right along anyway
+for (let suspect of Object.keys(investigate_basic.accuse)) investigate_full.accuse[suspect] = () => null;
 
 function TRAVELBUTTONS(dest) {
 	let have_dest = false;
-	//(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
+	(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
 	return DIV({class: "travelbuttons"}, [
 		"Travel to: ",
 		(dest||all_locations).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, locations[d].dest)),
@@ -533,7 +541,8 @@ on("click", "#inspect-full", e => {
 		investigate_full[state.scene][item](),
 	];
 	fullinvestigate.classList.add("seen");
-	if (state.accuse && !state.evidence) {
+	if (state.scene === "accuse") {
+		//Autonavigate on accusation; the full-investigate info is in the Markdown scene
 		state.scene = "evidence";
 		here = state[state.scene] = {investigated: { }, time_spent: 0, accused: item};
 		loc = locations[state.scene];

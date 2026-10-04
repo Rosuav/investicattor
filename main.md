@@ -124,11 +124,11 @@ your notes here, and choose who to accuse.
 
 * At the crime scene, [Bob, Misty's primary human](bob)? Or [Alice, the smaller human](alice)?
 * At the shop, [Tomas the cashier](tomas)? Or [Zeke the customer](zeke)?
-* One of the neighbours? [Rex, the ugly canine](rex) or [his owner, Mr Gruff](gruff)? The [boat people, Frank and Stan](frankstan),
-  their friend [Patato](patato) or the [rooster](windvane)? Perhaps [James 'The Cook'](james) or possibly it got lost in the [stuff](stuff)?
+* One of the neighbours? [Rex, the ugly canine](rex) or [his owner, Mr Gruff](mr-gruff)? The [boat people, Frank and Stan](frank-and-stan),
+  their friend [Patato](patato) or the [rooster](windvane)? Perhaps [James 'The Cook'](james) or possibly it got lost in the [stuff](the-stuff)?
 * The [fish-and-chippery employee, Judy](judy)? One of the people eating - [Dorothy](dorothy) or [Lyn](lyn)?
 
-Or perhaps [no crime has been committed](nocrime) and the humans were right?
+Or perhaps [no crime has been committed](nobody) and the humans were right?
 
 ### Accuse: Bob
 
@@ -149,14 +149,16 @@ It was the young girl's fault. She was supposed to put food in the bowl. Do we k
 
 ### Accuse: Tomas
 
-A tuna-selling shop is supposed to sell tuna. Why did this one not?
+While providing tuna is not his ONLY duty, it is clearly his most important, and failure to follow through on it
+is punishable by a fine of not less than fifty headpats or ten minutes imprisoned under a cat, or both.
 
 * Point to the [empty tuna shelves](tunashelves)
 * Get a confession from [Tomas](tomas) directly
 
 ### Accuse: Zeke
 
-It was that customer, walking around, pretending to be innocent. But we can see right through them!
+Humans have these silly ideas that everyone's equally allowed to buy products, but we know that depriving a cat
+of essential supplies is unacceptable.
 
 * Cite [Zeke's](zeke) behaviour
 * Show that the [shelves](shelves) had been restocked in time for the investigation
@@ -176,15 +178,44 @@ Not every human obeys the law. Some of them think their own dogs are more import
 * Extract a confession from the [man himself](gruff).
 * Ask [Rex](rex) to spill the beans.
 
-### Accuse: Boat people
-### Accuse: Rooster
-### Accuse: Cook
-### Accuse: Nobody (lost in pile of stuff)
-### Accuse: Fish-and-chippery
-### Accuse: Diner
+### Accuse: Frank and Stan
+
+Frank and Stan can without doubt be charged with aggravated assault on the senses, and maybe also with
+theft of tuna.
+
+### Accuse: Patato
+
+Concealing stolen tuna is itself a crime.
+
+### Accuse: Windvane
+
+Evil, evil poultry.
+
+### Accuse: James
+
+James 'The Cook' has no ethics and no generosity towards cats. He most likely took the tuna.
+
+### Accuse: The Stuff
+
+Technically it's not a crime for tuna to get lost, but with Harry's help, we can get it back.
+
+### Accuse: Judy
+
+It's unethical to sell someone a 'piece of fish' that came from a can of chopped tuna, especially when
+doing so deprives a cat of essential food.
+
+### Accuse: Dorothy
+
+A voracious eater and probably not content with just one meal of fish per day, she very likely took our client's tuna.
+
+### Accuse: Lyn
+
+Imagine if she were accusing you of something. The 'What if?' would make for an interesting investigation!
+
 ### Accuse: Nobody
 
-Perhaps nobody was actually at fault. Sometimes, things just happen.
+Perhaps nobody was actually at fault. Sometimes, things just happen. We should tell Harry so that he doesn't worry
+about following this up further.
 
 I know it seems impossible but maybe we can check the [food bowl](foodbowl) and show that there's not been a crime??
 
