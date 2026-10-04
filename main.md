@@ -152,7 +152,7 @@ It was the young girl's fault. She was supposed to put food in the bowl. Do we k
 While providing tuna is not his ONLY duty, it is clearly his most important, and failure to follow through on it
 is punishable by a fine of not less than fifty headpats or ten minutes imprisoned under a cat, or both.
 
-* Point to the [empty tuna shelves](tunashelves)
+* Point to the [empty tuna shelves](shoptuna)
 * Get a confession from [Tomas](tomas) directly
 
 ### Accuse: Zeke
@@ -161,7 +161,7 @@ Humans have these silly ideas that everyone's equally allowed to buy products, b
 of essential supplies is unacceptable.
 
 * Cite [Zeke's](zeke) behaviour
-* Show that the [shelves](shelves) had been restocked in time for the investigation
+* Show that the [shelves](shoptuna) had been restocked in time for the investigation
 
 ### Accuse: Rex
 

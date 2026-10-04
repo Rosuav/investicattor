@@ -186,6 +186,28 @@ const investigate_basic = {
 	evidence: {
 		foodbowl: P("Misty's food bowl is empty."),
 		shoptuna: P("The shop does, in fact, carry tuna, and was not at fault."),
+		alice: P("Ask Alice for testimony - relevant to multiple accusations"),
+		fridge: P("Search the fridge and cupboards, will come up blank"),
+		bob: P("Ask Bob for testimony"),
+		zeke: P("Report what you saw about Zeke"),
+		dogbowl: P("There's no tuna in the dog's bowl"),
+		rex: P("The only confession the humans recorded was 'Woof'"),
+		book: P("I don't know what you expected. It's a book."),
+		gruff: P("Ask Mr Gruff for testimony"),
+		monster: P("Frank and Stan's Monster is very noisy."),
+		patato: P("Testimony from Pat"),
+		myself: P("I know what I saw and it was the most evil of poultry"),
+		solarheater: P("It burned my paws and I have never forgiven it."),
+		basement: P("A locked basement"),
+		james: P("Interrogate James"),
+		stuff: P("Search the stuff"),
+		window: P("Accuse Microsoft"),
+		judy: P("Get a confession"),
+		lyn: P("Ask Lyn for help"),
+		counter: P("Actually you didn't find anything on the counter"),
+		footprints: P("You don't recognize who these came from."),
+		dorothy: P("Get her confession"),
+		ricebot: P("You don't even know a Ricebot!"),
 	},
 };
 //For the tutorial, you are always allowed to investigate everything.
@@ -408,9 +430,43 @@ const investigate_full = {
 		foodbowl: () => P([
 			"The food bowl's emptiness speaks for itself. But for the sake of police work, we need to bag it as evidence.",
 		]),
+		_nobody_foodbowl: (correct) => P([
+			"The food bowl is actually full. ",
+			!correct && "I don't know how we missed seeing that.",
+			correct && "There's no evidence of any crime.",
+		]),
 		shoptuna: () => P([
 			"You drag Harry to the tuna shop and demonstrate that cans ARE available.",
 		]),
+		_tomas_shoptuna: () => P([
+			correct ? "There were no cans of tuna available to buy, which makes this the shop's fault."
+			: "Attempting to demonstrate the availability of cans, you come up a little short.",
+		]),
+		//TODO: If "_{guilty}_{evidence} exists (eg "_tomas_shoptuna"), call that function instead
+		//of "{evidence}"(), and pass it true or false for whether the accusation is correct.
+		alice: () => P("Ask Alice for testimony - relevant to multiple accusations"),
+		fridge: () => P("Search the fridge and cupboards, will come up blank"),
+		bob: () => P("Ask Bob for testimony"),
+		zeke: () => P("Report what you saw about Zeke"),
+		dogbowl: () => P("There's no tuna in the dog's bowl"),
+		rex: () => P("The only confession the humans recorded was 'Woof'"),
+		book: () => P("I don't know what you expected. It's a book."),
+		gruff: () => P("Ask Mr Gruff for testimony"),
+		monster: () => P("Frank and Stan's Monster is very noisy."),
+		patato: () => P("Testimony from Pat"),
+		myself: () => P("I know what I saw and it was the most evil of poultry"),
+		solarheater: () => P("It burned my paws and I have never forgiven it."),
+		basement: () => P("A locked basement"),
+		james: () => P("Interrogate James"),
+		stuff: () => P("Search the stuff"),
+		window: () => P("Accuse Microsoft"),
+		judy: () => P("Get a confession"),
+		lyn: () => P("Ask Lyn for help"),
+		counter: () => P("Actually you didn't find anything on the counter"),
+		footprints: () => P("You don't recognize who these came from."),
+		//The footprints will need several different descriptions depending on whose they turn out to be.
+		dorothy: () => P("Get her confession"),
+		ricebot: () => P("You don't even know a Ricebot!"),
 	},
 };
 //Allow the "full investigate" renderer to not crash, but we move right along anyway
