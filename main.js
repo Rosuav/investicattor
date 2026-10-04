@@ -483,9 +483,8 @@ on("click", "[data-investigate]", e => {
 	const seen = !!detail;
 	if (investigable && !seen) fullinvestigate = e.match;
 	DOM("#inspect-full").hidden = seen;
-	replace_content("#inspect-full",
-		investigable ? "Inspect fully" : "(out of time)",
-	).disabled = !investigable;
+	const labels = ["(out of time)", "Inspect fully", "(already accused)", "Accuse"];
+	replace_content("#inspect-full", labels[investigable + (state.accuse ? 2 : 0)]).disabled = !investigable;
 	DOM("#inspectdlg").showModal();
 });
 
