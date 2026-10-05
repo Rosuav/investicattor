@@ -68,7 +68,7 @@ A quick jump and you're over the fence; the back door is open and you can visit 
 ### Neighbour: Canine
 
 Ah, a dog. Not a fan; this obnoxious creature insists on coming over and saying hello. With that disgusting canine slobber.
-Ugh. Humans call it "friendly" but what do they know. Anyhow. His human refers to him as Rex, which is a typically
+Ugh. Humans call it "friendly" but what do they know. Anyhow. His human refers to him as [Rex](rex), which is a typically
 pretentious dog name.
 
 This house is near enough that someone might have seen something - or even snuck over to steal the tuna.
@@ -77,7 +77,7 @@ the [kitchen](kitchen) or perhaps [upstairs](upstairs). The [primary human of th
 something to tell you, too. Maybe a confession.
 
 This is one of the few houses in the street that birds never land on. There must be a reason for that. Might
-have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of a [dog](rex).
+have something to do with the [strange colour of the roof](roof), or perhaps it's the presence of the dog.
 
 ### Neighbour: Smelly
 

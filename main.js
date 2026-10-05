@@ -152,7 +152,7 @@ const investigate_basic = {
 		monster: P("It's currently making disgusting noises - is this what they call music? Can't be very interesting."),
 		frankstan: P("They're playing with that boat thing again. They don't seem to have noticed a cat approach."),
 		cabinet: P("Looks like a perfect hiding place for stolen tuna!"),
-		couch: P("One of the humans is sitting here, saying 'where is that silly phone', only he's not saying 'silly'."),
+		couch: P("One of the humans is sitting here, saying 'where is that silly phone', only she's not saying 'silly'."),
 		laser: P("Lasers are the ultimate weapon for cats. If we could catch one, it would be the best day ever."),
 		nest: P("Birds don't eat tuna, but cats eat birds."),
 		windvane: P("It's supposed to be some sort of rooster that points in different directions. You are indifferent to its directions."),
