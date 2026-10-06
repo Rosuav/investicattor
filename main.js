@@ -66,7 +66,12 @@ let here = { }; //Same as state[state.scene] once we're in a location.
 const suspects = {
 	bob: {
 		evidence: ["crimescene.foodbowl", "evidence.foodbowl", "shop.tuna", "evidence.shoptuna"],
-		correct: P("The evidence is clear: "),
+		correct: P([
+			"The evidence is clear: Bob failed to deliver the requisite tuna on schedule. He had ",
+			"no excuse, no justification; he simply failed in his duty to his cat. You submit your ",
+			"findings to Harry, along with your request that Bob be convicted and sentenced to the ",
+			"maximum penalty of one hundred head pats and six minutes of belly rubs.",
+		]),
 		noproof: P("text here for if you accused him but didn't get the evidence"),
 		escaped: P("text here for if you accused someone else"),
 		falsely: P("text here for if you accused him when innocent"),
