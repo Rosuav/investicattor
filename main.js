@@ -182,11 +182,29 @@ const suspects = {
 		]),
 	},
 	james: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		//NOTE: You don't have to have inspected the basement in order to submit it as evidence.
+		//The mere fact that it's locked is crime enough for a cat.
+		evidence: ["neighbour_littered.james", "evidence.james", "evidence.basement"],
+		correct: P([
+			"Cooks make food out of other food. It's no surprise that he wanted the tuna. That is no ",
+			"excuse, but it is at least understandable. With Harry's help, you investigate the locked ",
+			"basement, and discover racks and racks of food, much of it canned, and all accessible to ",
+			"the kitchen and its cook. Proving that this tuna was stolen is someone else's job; you've ",
+			"solved the case and can now triumphantly return to sleeping in boxes."
+		]),
+		noproof: P([
+			"It's entirely possible that James took the tuna, although you're having a hard time ",
+			"convincing Harry of this. I suppose he's going to get away with it.",
+		]),
+		escaped: P([
+			"James the Cook has a large supply of tuna, and it's likely some of it was stolen. You did ",
+			"not detect it, which is clearly not your fault, as the tuna was encased in cans.",
+		]),
+		falsely: P([
+			"Falsely accusing James the Cook of stealing tuna has probably stopped him from giving you ",
+			"any food samples for the foreseeable future, but he'll probably still drop bits now and then, ",
+			"and what hits the mat goes to the cat.",
+		]),
 	},
 	dorothy: {
 		evidence: [],
@@ -369,7 +387,7 @@ const investigate_basic = {
 		stuff: P("A lot of stuff. If there's any tuna in here, it's been here for years."),
 		window: P("The window is too high to get through, but you can definitely smell food being made on the other side."),
 		james: P("James is making food. You approach, hoping either to learn about stolen tuna, or about dinner."),
-		basement: P("It's locked."),
+		basement: P("It's locked, so you'll need human help here."),
 		solarheater: P("Massive black area all over the roof - no idea why the humans installed it."),
 	},
 	//DENOUMENT - Phase 1: Accusations
@@ -655,15 +673,27 @@ const investigate_full = {
 			"You jump at the window and smack your head into the glass. The open part is way too high to get through.",
 		]),
 		james: () => P([
-			//Possible suspect
 			"Whether there's tuna here or not, there's definitely delicious food being made. You take advantage of the ",
 			"open side door and sidle up to James, hoping for a sample. One is dropped to you - perhaps not ",
 			"intentionally but that makes no difference - and you devour it happily. Now then. About that investigation.",
+		]),
+		_james_james: () => P([
+			"Whether there's tuna here or not, there's definitely delicious food being made. You take advantage of the ",
+			"open side door and sidle up to James, hoping for a sample. One is dropped to you in what is clearly an ",
+			"attempted bribe. You accept. Seems likely he's hiding something though, so we may need to search further.",
 		]),
 		basement: () => [
 			P({class: "catquote"}, "Doors have locks, locks need keys, which you don't have."),
 			//Let this one animate because why not!
 			IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/default/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),
+		],
+		_james_basement: () => [
+			P({class: "catquote"}, [
+				"Doors have locks, locks need keys, which you don't have.",
+				IMG({src: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_689922c1be4f449faf672e4a45b78b2c/default/light/2.0", alt: "- Cheshire Cat", title: "Cheshire Cat"}),
+				"Let us hope the doors are open.",
+			]),
+			P("This is where Harry could be very helpful if he wants to; he can get things called 'search warrants'."),
 		],
 		solarheater: () => P([
 			"It's annoyingly high and hard to reach, and you know from past experience that it burns your paws. Also, ",
