@@ -548,13 +548,21 @@ const render_scene = {
 		state.correct && did_investigate(suspects[state.guilty].evidence) ? [
 			//Well done! You picked the right person and got all the evidence.
 			suspects[state.guilty].correct,
-			P("- success text -"),
+			P({class: "gameover win"}, [
+				"Well done! You have successfully cracked the case. You are, as all cats should be, ",
+				"rightly proud of yourself. Exemplary work. I am sure the humans will celebrate your ",
+				"accomplishments.",
+			]),
 		] : [
 			//.... Or not. Better luck next time. You either accused the right person without enough evidence...
 			state.correct ? suspects[state.guilty].noproof
 			//... or picked the wrong person. The guilty one escaped, and the accused one is angry.
 			: [suspects[state.guilty].escaped, suspects[state.accused].falsely],
-			P("- failure text -"),
+			P({class: "gameover loss"}, [
+				"Sadly, you did not manage to secure a conviction. Oh well. I'm sure Misty's going to ",
+				"get a fresh delivery of tuna soon, but you won't be able to claim that it was through ",
+				"your direct intervention that she was saved. Better luck next time.",
+			]),
 		],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),

@@ -97,3 +97,16 @@ dialog > section > div {
 #inspect-full[disabled] {
 	color: silver;
 }
+
+.gameover {
+	border: 1px solid;
+	padding: 4px 10px;
+}
+.gameover.win {
+	background: #f8fff8;
+	border-color: #080;
+}
+.gameover.loss {
+	background: #fff8f0;
+	border-color: #800;
+}
