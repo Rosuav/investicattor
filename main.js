@@ -79,8 +79,8 @@ const suspects = {
 		falsely: "text here for if you accused him when innocent",
 	},
 };
-state.suspect = random_choice(Object.keys(suspects));
-if (!enforce_time_limits) console.log("GUILTY:", state.suspect);
+state.guilty = random_choice(Object.keys(suspects));
+if (!enforce_time_limits) console.log("GUILTY:", state.guilty);
 
 const locations = {
 	crimescene: {
@@ -288,13 +288,13 @@ const investigate_full = {
 		],
 	},
 	shop: {
-		tomas: () => [
-			P([
-				//Suspect: The shopkeeper refused sale.
-				//Possible evidence: Empty shelves, no tuna in stock
-				"It's possible that this person refused to provide tuna.",
-			]),
-		],
+		tomas: () => P([
+			"It's possible that this person refused to provide tuna.",
+		]),
+		_tomas_tomas: () => P([
+			"He's constantly scrolling on his phone between customers. At least, I think that's what humans ",
+			"call it when they're paying zero attention to the cat in the room, or whether there's tuna on the shelf.",
+		]),
 		yuck_vegetable: () => P([
 			"You perform your vital duties of verifying that gravity is still in effect by knocking a ",
 			"bit of it onto the floor, only to receive an unpleasant look and a heavy sigh from a nearby human. ",
@@ -307,14 +307,15 @@ const investigate_full = {
 		pungent_boxes: () => P([
 			"I think they smell like soap. What does soap smell like, again?",
 		]),
-		tuna: () => [
-			//Potential evidence. For now assuming that it isn't the cause.
-			P([
-				"Jumping up onto a shelf, you nudge your nose against the row of cans, counting them. ",
-				"The massive clatter on the floor sounded like about twenty, so there's clearly no lack ",
-				"of tuna at the shop.",
-			]),
-		],
+		tuna: () => P([
+			"Jumping up onto a shelf, you nudge your nose against the row of cans, counting them. ",
+			"The massive clatter on the floor sounded like about twenty, so there's clearly no lack ",
+			"of tuna at the shop.",
+		]),
+		_tomas_tuna: () => P([
+			"Jumping up onto a shelf, you scan for tuna cans. There's one! ... no wait, that's just ",
+			"some dust. This whole shelf and not a single can of tuna. No wonder the economy's so bad.",
+		]),
 		customers: () => P([
 			//For now just a red herring but this might give you some other suspects to investigate.
 			//Possible suspect: Customer named Zeke, who bought all of the tuna for his own cat (how dare he).
@@ -457,20 +458,18 @@ const investigate_full = {
 		foodbowl: () => P([
 			"The food bowl's emptiness speaks for itself. But for the sake of police work, we need to bag it as evidence.",
 		]),
-		_nobody_foodbowl: (correct) => P([
+		_nobody_foodbowl: () => P([
 			"The food bowl is actually full. ",
-			!correct && "I don't know how we missed seeing that.",
-			correct && "There's no evidence of any crime.",
+			!state.correct && "I don't know how we missed seeing that.",
+			state.correct && "There's no evidence of any crime.",
 		]),
 		shoptuna: () => P([
 			"You drag Harry to the tuna shop and demonstrate that cans ARE available.",
 		]),
 		_tomas_shoptuna: () => P([
-			correct ? "There were no cans of tuna available to buy, which makes this the shop's fault."
+			state.correct ? "There were no cans of tuna available to buy, which makes this the shop's fault."
 			: "Attempting to demonstrate the availability of cans, you come up a little short.",
 		]),
-		//TODO: If "_{guilty}_{evidence} exists (eg "_tomas_shoptuna"), call that function instead
-		//of "{evidence}"(), and pass it true or false for whether the accusation is correct.
 		alice: () => P("Ask Alice for testimony - relevant to multiple accusations"),
 		fridge: () => P("Search the fridge and cupboards, will come up blank"),
 		bob: () => P("Ask Bob for testimony"),
@@ -534,20 +533,20 @@ const render_scene = {
 	]},
 	evidence() {return [
 		H2("Police Station"),
-		...markdown["accuse-" + here.accused],
+		...markdown["accuse-" + state.accused],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results", disabled: here.time_spent < loc.time_limit}, "Conclude the case"),
 		]),
 	]},
 	results() {return [
 		H2("Police Station"),
-		state.suspect === state.evidence.accused
+		state.correct
 			//You picked the right person. Did you have all the evidence you need?
-			? did_investigate(suspects[state.suspect].evidence)
-				? P(suspects[state.suspect].correct)
-				: P(suspects[state.suspect].noproof)
+			? did_investigate(suspects[state.guilty].evidence)
+				? P(suspects[state.guilty].correct)
+				: P(suspects[state.guilty].noproof)
 			//You picked the wrong person. The guilty one escaped, and the accused one is angry.
-			: [P(suspects[state.suspect].escaped), P(suspects[state.evidence.accused].falsely)],
+			: [P(suspects[state.guilty].escaped), P(suspects[state.accused].falsely)],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
 		]),
@@ -643,15 +642,18 @@ on("click", "#inspect-full", e => {
 	if (enforce_time_limits && here.time_spent >= loc.time_limit) return; //Shouldn't happen (the button should be hidden).
 	const item = fullinvestigate.dataset.investigate;
 	++here.time_spent;
+	const full = investigate_full[state.scene];
 	here.investigated[item] = [
 		lindt.HR(),
-		investigate_full[state.scene][item](),
+		(full[`_${state.guilty}_${item}`] || full[item])(),
 	];
 	fullinvestigate.classList.add("seen");
 	if (state.scene === "accuse") {
 		//Autonavigate on accusation; the full-investigate info is in the Markdown scene
 		state.scene = "evidence";
-		here = state[state.scene] = {investigated: { }, time_spent: 0, accused: item};
+		state.accused = item;
+		state.correct = state.accused === state.guilty;
+		here = state[state.scene] = {investigated: { }, time_spent: 0};
 		loc = locations[state.scene];
 	}
 	repaint();
