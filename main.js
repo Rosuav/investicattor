@@ -72,16 +72,41 @@ const suspects = {
 			"findings to Harry, along with your request that Bob be convicted and sentenced to the ",
 			"maximum penalty of one hundred head pats and six minutes of belly rubs.",
 		]),
-		noproof: P("text here for if you accused him but didn't get the evidence"),
-		escaped: P("text here for if you accused someone else"),
-		falsely: P("text here for if you accused him when innocent"),
+		noproof: P([
+			"While it does appear that Bob failed in his duty to provide tuna, a conviction is not ",
+			"secured just through your own confidence. Sadly, the humans demand a bit more rigour ",
+			"than that.",
+		]),
+		escaped: P([
+			"The empty food bowl points clearly to Bob having been the one to fail in his duty, yet ",
+			"he evades the long arm of the law... I mean paw.",
+		]),
+		falsely: P([
+			"Bob's heart was in the right place. He truly wanted to do the best for Misty. And what ",
+			"is his reward? To be accused of a heinous crime. Cats. Cats never change.",
+		]),
 	},
 	tomas: {
 		evidence: ["shop.tuna", "evidence.shoptuna", "shop.tomas", "evidence.tomas"],
-		correct: P("text here for the final scene if you caught him"),
-		noproof: P("text here for if you accused him but didn't get the evidence"),
-		escaped: P("text here for if you accused someone else"),
-		falsely: P("text here for if you accused him when innocent"),
+		correct: P([
+			"The cat's food bowl is supplied, ultimately, from the shop where Tomas works. Keeping ",
+			"the shelves stocked is his clear duty to felinehood. He must be punished for this failure, ",
+			"and the sentence shall be harsh. For the next twenty minutes, every time he attempts to ",
+			"leave his spot, a cat will insist on headpats, demanding that he remain. Make it so.",
+		]),
+		noproof: P([
+			"It certainly seems like Tomas failed to keep the shelves stocked. But you also failed to ",
+			"build your case against him, and he's likely to win on appeal. By which I mean, he's going ",
+			"to eat a banana and give you the peel, thus distracting you from his horrible crime.",
+		]),
+		escaped: P([
+			"You hear evil cackling laughter in the distance. It is the shopkeeper, Tomas, who has ",
+			"escaped justice. Or maybe he's reading memes. Could go either way.",
+		]),
+		falsely: P([
+			"While it may seem reasonable to blame the shop that tuna is obtained from, the full ",
+			"availability of said tuna suggests that this wasn't actually the problem.",
+		]),
 	},
 	zeke: {
 		evidence: [],
@@ -138,12 +163,32 @@ if (!enforce_time_limits) console.log("GUILTY:", state.guilty);
 //These people can be accused, but are never going to be guilty. The text here functions merges
 //with suspects[n].falsely above.
 Object.entries({
-	alice: P("how dare you accuse the little girl"),
-	rex: P(""),
-	"frank-and-stan": P(""),
-	windvane: P(""),
-	"the-stuff": P(""),
-	lyn: P(""),
+	alice: P([
+		"With a name like hers, Alice certainly ought to be capable of a lot. ",
+		"However, she does not appear to have been the cause of the empty food bowl.",
+	]),
+	rex: P([
+		"Racial profiling of canines never seems to result in solid convictions. ",
+		"Those evil dogs get away with it yet again! Or perhaps someone else was guilty.",
+	]),
+	"frank-and-stan": P([
+		"Frank and Stan are still busy tinkering with their monster, and haven't even ",
+		"noticed that you accused them. Which is good; if they were angry, they might ",
+		"play even more monster music at you, which would not be fun.",
+	]),
+	windvane: P([
+		"Ugh. That evil, evil chicken. It escapes us again!",
+	]),
+	"the-stuff": P([
+		"Despite your best efforts, searching the pile for tuna did not bring up even ",
+		"a single stolen can.",
+	]),
+	lyn: P([
+		"As an expert on red herrings, Lyn is quite familiar with the art of misdirection. ",
+		"Her work at the Impostor Factory and the associated Institute has taught her many ",
+		"things, including the correct way to talk to a cat. She picks you up and measures ",
+		"your (quite considerable!) length.",
+	]),
 }).forEach(([id, falsely]) => suspects[id] = {falsely});
 
 
