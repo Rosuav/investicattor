@@ -86,6 +86,12 @@ const suspects = {
 };
 state.guilty = random_choice(Object.keys(suspects));
 if (!enforce_time_limits) console.log("GUILTY:", state.guilty);
+//These people can be accused, but are never going to be guilty. The text here functions merges
+//with suspects[n].falsely above.
+Object.entries({
+	alice: P("how dare you accuse the little girl"),
+}).forEach(([id, falsely]) => suspects[id] = {falsely});
+
 
 const locations = {
 	crimescene: {
