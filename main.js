@@ -185,11 +185,31 @@ const suspects = {
 		falsely: P(""),
 	},
 	nobody: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		//NOTE: In order to progress the game, you must select two pieces of evidence, but so long
+		//as you select the food bowl, you will be correct.
+		evidence: ["crimescene.foodbowl", "evidence.foodbowl"],
+		correct: P([
+			"It's a bit of an anticlimax, but I guess there really WAS some food in the bowl. ",
+			"Not enough to truly satisfy of course - you could clearly see the bottom of the bowl, ",
+			"which means the bowl's functionally empty, but enough that Harry won't charge anyone ",
+			"with any crime in connection to this. Still, he commends you for being bold enough to ",
+			"admit this, and rewards you with many headpats.",
+		]),
+		noproof: P([
+			"It's a bit of an anticlimax, but I guess there really WAS some food in the bowl. ",
+			"Not enough to truly satisfy of course - you could clearly see the bottom of the bowl, ",
+			"which means the bowl's functionally empty. As a consolation prize, you demand many ",
+			"headpats from both Alice and Bob. They oblige, while telling you about cryptography.",
+		]),
+		escaped: P([
+			"Much as you would like to assign blame here, it's a bit hard to justify when the ",
+			"food bowl actually had some tuna in it. Harry declines to convict anyone.",
+		]),
+		falsely: P([
+			"It's a brave move to admit that you were wrong - especially when you're wrong to admit ",
+			"that you're wrong! Perhaps next time, have the boldness to trust your conviction and ",
+			"get a conviction.",
+		]),
 	},
 };
 state.guilty = random_choice(Object.keys(suspects));
