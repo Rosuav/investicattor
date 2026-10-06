@@ -109,11 +109,29 @@ const suspects = {
 		]),
 	},
 	zeke: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		evidence: ["shop.tuna", "evidence.shoptuna", "shop.customers", "evidence.zeke"],
+		correct: P([
+			"Through the power of purring, you convince Harry to go and arrest Zeke. His crime? Buying ",
+			"all of the available tuna to feed to his own cat (or himself, perhaps), leaving none for ",
+			"anyone else. It is unacceptable and he must be punished! With the most horrendous punishment ",
+			"you know of: Utter and total disdain. You will turn your back on him pointedly, and refuse ",
+			"to acknowledge his presence.",
+		]),
+		noproof: P([
+			"Zeke clearly ate all of the tuna before Bob could come and buy any. But as he's disposed of the ",
+			"evidence, it's going to be very difficult to secure a conviction. Still, you've won a moral ",
+			"victory, and you know he... well, actually he probably will do it again. But next time we'll ",
+			"catch him. Next time, Gadget!",
+		]),
+		escaped: P([
+			"Unbeknownst to you (that's a great word, your human loves it), Zeke had absconded (another ",
+			"great word!) with the shop's entire supply of tuna. And he got away clean. He wouldn't have if ",
+			"the tuna had been in tomato sauce though - that stuff never comes out.",
+		]),
+		falsely: P([
+			"You accuse some guy named Zeke. When you ask Harry to arrest him, for some reason, he refuses; ",
+			"apparently you need to have 'evidence', or at the very least, know who you're even arresting.",
+		]),
 	},
 	"mr-gruff": {
 		evidence: [],
@@ -430,12 +448,21 @@ const investigate_full = {
 			"Jumping up onto a shelf, you scan for tuna cans. There's one! ... no wait, that's just ",
 			"some dust. This whole shelf and not a single can of tuna. No wonder the economy's so bad.",
 		]),
+		_zeke_tuna: () => P([
+			"Jumping up onto a shelf, you nudge your nose against the row of cans, counting them. ",
+			"The massive clatter on the floor sounded like about five, which isn't very many; maybe ",
+			"someone cleaned the place out and it's only recently been restocked.",
+		]),
 		customers: () => P([
 			//For now just a red herring but this might give you some other suspects to investigate.
 			//Possible suspect: Customer named Zeke, who bought all of the tuna for his own cat (how dare he).
-			//"It's just a human. Probably useless.", //use this somewhere
 			"There are a few humans around. Interviewing them has resulted in zero responses, but two people ",
-			"rubbed by head, so that was something.",
+			"rubbed my head, so that was something.",
+		]),
+		_zeke_customers: () => P([
+			"There are a few humans around. Interviewing them has resulted in zero responses, but one of them, ",
+			"named Zeke, appears to have over a shelf's worth of tuna in his basket. This may have resulted in ",
+			"an artificial shortage! It is unfair of him to favour his own cat over your friend.",
 		]),
 	},
 	fission: {
