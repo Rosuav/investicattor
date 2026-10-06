@@ -487,7 +487,7 @@ for (let suspect of Object.keys(investigate_basic.accuse)) investigate_full.accu
 
 function TRAVELBUTTONS(dest) {
 	let have_dest = false;
-	(dest||all_locations).forEach(d => !state[d] && (have_dest = true));
+	if (enforce_time_limits) (dest||all_locations).forEach(d => !state[d] && (have_dest = true));
 	return DIV({class: "travelbuttons"}, [
 		"Travel to: ",
 		(dest||all_locations).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, locations[d].dest)),
