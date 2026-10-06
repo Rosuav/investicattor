@@ -666,3 +666,7 @@ on("click", "#shownotes", e => {
 	]);
 	DOM("#notesdlg").showModal();
 });
+
+window.onbeforeunload = e => {
+	if (state.scene !== "intro") e.preventDefault();
+}
