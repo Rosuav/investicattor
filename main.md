@@ -177,7 +177,8 @@ Dogs can eat tuna, but by the law of the felines, they are supposed to permit ca
 
 Not every human obeys the law. Some of them think their own dogs are more important than other people's cats.
 
-* That [strange thing](book) in his hands
+* The [kitchen cabinets](kitchen) conceal a dread secret.
+* The [strange thing](book) in his hands.
 * Extract a confession from the [man himself](gruff).
 * Ask [Rex](rex) to spill the beans.
 

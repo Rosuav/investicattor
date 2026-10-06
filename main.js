@@ -514,23 +514,31 @@ const investigate_full = {
 			"hungry enough, it's food. Rex always seems hungry enough. Or maybe he likes it.",
 		]),
 		kitchen: () => P([
-			//Possible evidence
 			"The first five cabinets you inspect have nothing but metal, plastic, or glass containers, ",
 			"devoid of food and thus of interest. In the sixth, you find a messy collection of cleaners, ",
 			"and in the seventh, some canned food. Interesting. Not tuna though.",
 		]),
+		"_mr-gruff_kitchen": () => P([
+			"The first five cabinets you inspect have nothing but metal, plastic, or glass containers, ",
+			"devoid of food and thus of interest. In the sixth, you find a messy collection of cleaners. ",
+			"But in the seventh, a collection of canned food, including tuna! This must be the murder wea... ",
+			"err, the stolen goods!",
+		]),
 		upstairs: () => P("A quick trot up the stairs confirms it - there's nobody there. He's downstairs."),
 		gruff: () => P([
-			//Possible suspect
 			"Mr Gruff is reading from one of those 'book' things, probably very exciting to those small ",
 			"brains that humans possess. You sidle up to him and gently request head pats. He obliges.",
+		]),
+		"_mr-gruff_gruff": () => P([
+			"Mr Gruff claims to be reading from one of those 'book' things, but he's extremely nervous ",
+			"and is clearly concealing something. Especially since the 'book' is called Financial Times, ",
+			"a thing that nobody would read for pleasure. Let's snoop around a bit.",
 		]),
 		roof: () => P("Never been good at identifying roofing types. Is that the one they call slate? No, tiles. Or something."),
 		rex: () => P("You spend some time marking Rex's favourite spot as your territory. Not that he's gonna care."),
 	},
 	neighbour_smelly: {
 		monster: () => P([
-			//Refer to it somewhere as "Frank and Stan's Monster"
 			"Frank and Stan are playing with their boat thing. It's making all those weird rumbling noises that ",
 			"the humans love so much. No sign of stolen tuna, and you really don't want to stick around too long ",
 			"with this much music happening. The humans are preoccupied and don't respond to you.",
@@ -620,10 +628,16 @@ const investigate_full = {
 		crisp_vegetable: () => P("Eating some food you haven't paid for annoys Harry and doesn't progress the investigation."),
 		zeke: () => P("Report what you saw about Zeke"),
 		dogbowl: () => P("There's no tuna in the dog's bowl."),
-		rex: () => P("While clear proof to a jury of cats, 'Woof' is not enough to convict Rex."),
+		rex: () => P(["While clear proof to a jury of cats, 'Woof' is not enough to convict ", state.accused === "mr-gruff" ? "Mr Gruff." : "Rex."]),
+		kitchen: () => P("The kitchen cabinets contain little of interest, and nothing of evidence."),
+		"_mr-gruff_kitchen": () => P("You show Harry the tuna cans in the kitchen cabinets. Clear evidence of guilt!"),
 		book: () => P("I don't know what you expected. It's a book."),
 		gruff: () => state.accused === "rex" ? P("Mr Gruff informs you that Rex is currently on vacation.")
 			: P("Mr Gruff has spent the entire day here with his books."),
+		"_mr-gruff_gruff": () => P([
+			"Mr Gruff claims to have spent the entire day here with his books, but given that he claims to have ",
+			"been reading the Financial Times, that is clearly a lie.",
+		]),
 		monster: () => P("It's noisy, smelly, and unpleasant, but it's not concealing tuna."),
 		patato: () => P("Patato has been patating all day."),
 		myself: () => P("That rooster needs to die!"),
