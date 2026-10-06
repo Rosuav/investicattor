@@ -254,7 +254,7 @@ let loc; //Same as locations[state.scene]
 //The three neighbours are randomly permuted, so "left" might be any of the three.
 //The description as you go there starts with the heading for the destination, then has content from the
 //direction, and then the content from the destination.
-all_locations.length -= 3; //Remove the neighbour_* entries so we can add them in order
+all_locations.length -= 5; //Remove the neighbour_* entries so we can add them in order, and the denoument since it gets added manually.
 const neighbours = ["canine", "smelly", "littered"];
 ["left", "right", "opposite"].forEach(dir => {
 	const kwd = neighbours.splice(Math.floor(Math.random() * neighbours.length), 1)[0];
