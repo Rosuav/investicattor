@@ -354,25 +354,29 @@ locations.crimescene.time_limit = Object.keys(investigate_basic.crimescene).leng
 //(Decrementing time is done automatically.)
 const investigate_full = {
 	crimescene: {
-		foodbowl: () => [
-			P([
-				"On closer inspection, you see dry cat food, but you can also see the bottom of the ",
-				"bowl, so that means it's practically empty. The cat is literally starving, I tell you.",
-			]),
-		],
+		foodbowl: () => P([
+			"On closer inspection, you see dry cat food, but you can also see the bottom of the ",
+			"bowl, so that means it's practically empty. The cat is literally starving, I tell you.",
+		]),
+		_nobody_foodbowl: () => P([
+			"On closer inspection, you see a bit of tuna, but you can also see the bottom of the ",
+			"bowl, so that means it's practically empty. The cat is literally starving, I tell you.",
+		]),
 		cupboard: () => [
 			P([
 				"Inside the cupboard are various unpleasant-smelling boxes, a few old sponges that you ",
 				"could tear to pieces if you wanted to make a mess, and no cans of tuna. Disappointing.",
 			]),
 		],
-		bob: () => [
-			P([
-				//Suspect: The adult failed to provide food for no reason.
-				"Humans normally are expected to refill food bowls. It's their most important task, and ",
-				"this one is not doing it. There must be a reason. Might be that Bob's broken.",
-			]),
-		],
+		bob: () => P([
+			"Humans normally are expected to refill food bowls. It's their most important task, and ",
+			"this one is not doing it. There must be a reason. Perhaps we should see where the food ",
+			"is supposed to have come from.",
+		]),
+		_bob_bob: () => P([
+			"Humans normally are expected to refill food bowls. It's their most important task, and ",
+			"this one is not doing it. There must be a reason. Might be that Bob's broken.",
+		]),
 		alice: () => [
 			P([
 				//Increased time cost?
