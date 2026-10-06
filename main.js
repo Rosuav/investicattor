@@ -516,7 +516,9 @@ const render_scene = {
 	]},
 	results() {return [
 		H2("Police Station"),
-		P("... TODO: Show whether you were right ..."),
+		state.suspect === state.evidence.accused
+			? P(suspects[state.suspect].correct)
+			: [P(suspects[state.suspect].escaped), P(suspects[state.evidence.accused].falsely)],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
 		]),
