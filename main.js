@@ -207,11 +207,28 @@ const suspects = {
 		]),
 	},
 	dorothy: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		evidence: ["fission.customers", "evidence.dorothy", "fission.footprints", "evidence.footprints"],
+		correct: P([
+			"A certain amount of fish being consumed each day is reasonable. More than that, it begins ",
+			"to raise questions, and at the level this woman eats it, it's clear she's supporting a fish ",
+			"habit. Stealing to get enough fish is unacceptable; but we can't come down too hard on her, ",
+			"she's just trying to consume vast quantities of mercury. We sentence her to rehab, in which ",
+			"all her fish will be given to a nearby cat (me, for preference), who will reward her with ",
+			"purrs and leg rubs.",
+		]),
+		noproof: P([
+			"Dorothy has been eating far too much fish, and probably stealing to support her habit, but ",
+			"without proof, we can't really do anything about it. It's a pity - she'll continue until she ",
+			"destroys herself, or starves every cat in the street.",
+		]),
+		escaped: P([
+			"A fish addict steals the tuna right out from under your nose, and yet escapes. I would like to ",
+			"say that at least the fish will be enjoyed, but they won't be enjoyed by a cat, and that's that.",
+		]),
+		falsely: P([
+			"Dorothy's fish habits may be considerable, but they haven't reached the level of theft, and it's ",
+			"not fair to her to accuse her in this way.",
+		]),
 	},
 	judy: {
 		evidence: [],
@@ -543,9 +560,14 @@ const investigate_full = {
 			"You jump up onto the counter, only to get shooed away. Not with a literal shoe, fortunately - not this time.",
 		]),
 		customers: () => P([
-			//Possible suspect: A customer seen here who eats far too much tuna and stole all the cans.
-			//Her name will be Dorothy. No relation to the one from Oz.
 			"You walk up to each of the humans, rub yourself against their legs, and determine that they're all innocent.",
+		]),
+		_dorothy_customers: () => P([
+			"You walk up to each of the humans, rub yourself against their legs, and determine their innocence. ",
+			"All except one, who needs further investigation. You demand more attention from the woman named Dorothy, ",
+			"and in the process, inspect her shoes. ",
+			state.fission?.investigated?.footprints ? "They match the footprints!"
+			: "This is probably foreshadowing or something.",
 		]),
 		staff: () => P([
 			//Possible suspect: A staff member ran out of fish, bought more, and got misdelivery of the cans.
@@ -579,6 +601,11 @@ const investigate_full = {
 		_patato_footprints: () => P([
 			"They look like a size meow, or maybe a bit bigger.",
 			state.neighbour_smelly?.investigated?.couch ? " They match the shoes that Patato is wearing!"
+			: " You take note of how they look, in case you spot someone with matching shoes.",
+		]),
+		_dorothy_footprints: () => P([
+			"They look like a size meow, or maybe a bit bigger.",
+			state.fission.investigated.customers ? " They match the shoes that Dorothy is wearing!"
 			: " You take note of how they look, in case you spot someone with matching shoes.",
 		]),
 	},
@@ -640,9 +667,9 @@ const investigate_full = {
 		_patato_couch: () => [
 			P([
 				"Patato has been expressing extreme frustration for some time, allowing you to get a good look ",
-				"at her shoes.",
-				state.fission?.investigated?.footprints ? " They match the footprints seen at the fish-and-chippery!"
-				: " This is probably foreshadowing or something.",
+				"at her shoes. ",
+				state.fission?.investigated?.footprints ? "They match the footprints seen at the fish-and-chippery!"
+				: "This is probably foreshadowing or something.",
 			]),
 			P([
 				"You muse for a while on the peculiarities of human names. Why would you name someone after a ",
@@ -769,10 +796,19 @@ const investigate_full = {
 			? "The footprints at the Fish-and-Chippery match Patato's shoes."
 			: "You don't recognize who these came from."
 		),
+		_dorothy_footprints: () => P(
+			state.fission?.investigated?.footprints && state.fission?.investigated?.customers
+			? "The footprints at the Fish-and-Chippery match Dorothy's shoes."
+			: "You don't recognize who these came from."
+		),
 		dorothy: () => P([
 			"Inquiring as to Dorothy's eating habits, you learn that, like most humans, she eats ",
 			"considerably less than one ocean of fish every day, so it's a relatively insignificant ",
 			"amount. Not enough to quibble over.",
+		]),
+		_dorothy_dorothy: () => P([
+			"Inquiring as to Dorothy's eating habits, you learn that she eats far too much fish. ",
+			"This may have led to her stealing in order to support her mercury addiction.",
 		]),
 		ricebot: () => P("You don't even know a Ricebot!"),
 	},
