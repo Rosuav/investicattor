@@ -545,13 +545,17 @@ const render_scene = {
 	]},
 	results() {return [
 		H2("Police Station"),
-		state.correct
-			//You picked the right person. Did you have all the evidence you need?
-			? did_investigate(suspects[state.guilty].evidence)
-				? suspects[state.guilty].correct
-				: suspects[state.guilty].noproof
-			//You picked the wrong person. The guilty one escaped, and the accused one is angry.
+		state.correct && did_investigate(suspects[state.guilty].evidence) ? [
+			//Well done! You picked the right person and got all the evidence.
+			suspects[state.guilty].correct,
+			P("- success text -"),
+		] : [
+			//.... Or not. Better luck next time. You either accused the right person without enough evidence...
+			state.correct ? suspects[state.guilty].noproof
+			//... or picked the wrong person. The guilty one escaped, and the accused one is angry.
 			: [suspects[state.guilty].escaped, suspects[state.accused].falsely],
+			P("- failure text -"),
+		],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
 		]),
