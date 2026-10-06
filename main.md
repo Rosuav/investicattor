@@ -154,6 +154,7 @@ is punishable by a fine of not less than fifty headpats or ten minutes imprisone
 
 * Point to the [empty tuna shelves](shoptuna)
 * Get a confession from [Tomas](tomas) directly
+* Eat one of the [vegetables](crisp_vegetable) on display
 
 ### Accuse: Zeke
 
@@ -162,6 +163,7 @@ of essential supplies is unacceptable.
 
 * Cite [Zeke's](zeke) behaviour
 * Show that the [shelves](shoptuna) had been restocked in time for the investigation
+* Eat one of the [vegetables](crisp_vegetable) on display
 
 ### Accuse: Rex
 
@@ -169,6 +171,7 @@ Dogs can eat tuna, but by the law of the felines, they are supposed to permit ca
 
 * The contents of [Rex's bowl](dogbowl) will prove this.
 * And of course, [Rex's confession](rex) demonstrates guilt.
+* Ask [Mr Gruff](gruff) where his dog has been.
 
 ### Accuse: Mr Gruff
 
@@ -193,6 +196,8 @@ Concealing stolen tuna is itself a crime.
 
 * Getting [a confession](patato) will help here.
 * Believe it or not, even a dog can be of use. Get testimony from [Rex](rex).
+* Identify the [footprints](footprints) from the fish-and-chippery as hers.
+* Ask [James](james) what he was cooking up.
 
 ### Accuse: Windvane
 
@@ -200,6 +205,7 @@ Evil, evil poultry.
 
 * I shall testify against this [myself](myself).
 * Maybe we can trick [Rex](rex) into chasing it off the roof?
+* Speaking of rooftop weirdos, the [black part](solarheater) on James's house is clearly in cahoots.
 
 ### Accuse: James
 
