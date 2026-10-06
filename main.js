@@ -157,11 +157,29 @@ const suspects = {
 		]),
 	},
 	patato: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		evidence: ["neighbour_smelly.couch", "evidence.patato", "fission.footprints", "evidence.footprints"],
+		correct: P([
+			"One would think that a fish-and-chippery can supply one's desire for fish, but perhaps ",
+			"the numbers on the right hand side of the menu scared her off. In any case, it appears ",
+			"that Patato went home fishless, and decided to obtain canned tuna instead. She protests ",
+			"that it was legitimately purchased, but you know better; that was clearly stolen! Your ",
+			"verdict is guilty, and your sentence is the confiscation of the remaining tuna, which ",
+			"will be distributed to deserving felines. Namely, yourself.",
+		]),
+		noproof: P([
+			"While it seems extremely likely that Patato snuck out and stole the fish, you don't ",
+			"actually have proof that she did. If only you could have spotted evidence somewhere ",
+			"while you were exploring...",
+		]),
+		escaped: P([
+			"You were busy suspecting other people, and meanwhile, a couch Patato slipped under your ",
+			"very nose. She was not, in fact, insignificant. This time.",
+		]),
+		falsely: P([
+			"Adding to an already angry Patato's stress levels, being falsely accused of tuna theft ",
+			"has not endeared you to her. Though I doubt she'd have been in the mood for headpats, ",
+			"regardless. So there's no great loss there.",
+		]),
 	},
 	james: {
 		evidence: [],
@@ -539,9 +557,11 @@ const investigate_full = {
 				"I suppose it's a red herring, then.",
 			]),
 		],
-		footprints: () => P([
-			//Possible evidence
+		footprints: () => P("They look like a size meow, or maybe a bit bigger."),
+		_patato_footprints: () => P([
 			"They look like a size meow, or maybe a bit bigger.",
+			state.neighbour_smelly?.investigated?.couch ? " They match the shoes that Patato is wearing!"
+			: " You take note of how they look, in case you spot someone with matching shoes.",
 		]),
 	},
 	neighbour_canine: {
@@ -590,7 +610,6 @@ const investigate_full = {
 		]),
 		couch: () => [
 			P([
-				//Possible suspect (long shot)
 				"Whatever the issue is with that phone, it's making Patato extremely frustrated and displeased. ",
 				"If you cared more, you could offer her some comfort, but you don't, so you don't.",
 			]),
@@ -598,6 +617,19 @@ const investigate_full = {
 				"You muse for a while on the peculiarities of human names. Why would you name someone after a ",
 				"vegetable? The other humans call her 'Pat' for short, which makes sense I guess, but really, ",
 				"why would she be called Pat-ato?",
+			]),
+		],
+		_patato_couch: () => [
+			P([
+				"Patato has been expressing extreme frustration for some time, allowing you to get a good look ",
+				"at her shoes.",
+				state.fission?.investigated?.footprints ? " They match the footprints seen at the fish-and-chippery!"
+				: " This is probably foreshadowing or something.",
+			]),
+			P([
+				"You muse for a while on the peculiarities of human names. Why would you name someone after a ",
+				"vegetable? The other humans call her 'Pat' for short, which makes sense I guess, but really, ",
+				"why would she be called a couch Pat-ato?",
 			]),
 		],
 		laser: () => [
@@ -676,6 +708,12 @@ const investigate_full = {
 		]),
 		monster: () => P("It's noisy, smelly, and unpleasant, but it's not concealing tuna."),
 		patato: () => P("Patato has been patating all day."),
+		_patato_patato: () => P([
+			"Patato has been patating all day",
+			state.fission?.investigated?.footprints && state.neighbour_smelly?.investigated?.couch
+			? ", she claims, yet her footprints are in the fish-and-chippery."
+			: ".",
+		]),
 		myself: () => P("That rooster needs to die!"),
 		solarheater: () => P("If it's not meant for walking on, why is it so smooth??"),
 		basement: () => P([
@@ -696,7 +734,11 @@ const investigate_full = {
 		]),
 		counter: () => P("You didn't actually find anything on the counter, so that won't help much."),
 		footprints: () => P("You don't recognize who these came from."),
-		//The footprints will need several different descriptions depending on whose they turn out to be.
+		_patato_footprints: () => P(
+			state.fission?.investigated?.footprints && state.neighbour_smelly?.investigated?.couch
+			? "The footprints at the Fish-and-Chippery match Patato's shoes."
+			: "You don't recognize who these came from."
+		),
 		dorothy: () => P([
 			"Inquiring as to Dorothy's eating habits, you learn that, like most humans, she eats ",
 			"considerably less than one ocean of fish every day, so it's a relatively insignificant ",
