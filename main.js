@@ -134,11 +134,27 @@ const suspects = {
 		]),
 	},
 	"mr-gruff": {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		evidence: ["neighbour_canine.kitchen", "evidence.kitchen", "neighbour_canine.gruff", "evidence.gruff"],
+		correct: P([
+			"Stealing perfectly good tuna that could have been fed to a cat and giving it instead to a filthy ",
+			"dog is a crime worthy of severe punishment. You report everything to Harry, and sure enough, Mr ",
+			"Gruff is found guilty. You sentence him to have every inch of dog territory also marked as cat ",
+			"territory - YOUR territory in fact.",
+		]),
+		noproof: P([
+			"It does seem that Mr Gruff stole the tuna in order to feed it to Rex, but without sufficient ",
+			"proof, it's hard to secure a conviction. A great pity. That dog and its human get to woof another ",
+			"day. Better luck next time.",
+		]),
+		escaped: P([
+			"It turns out, Mr Gruff actually stole the tuna, for no better reason than to feed it to his filthy ",
+			"dog Rex! But while your attention was diverted, he successfully concealed his crime, and has ",
+			"completely evaded justice. Tragic.",
+		]),
+		falsely: P([
+			"Some might say that falsely accusing a dog and its human of theft is police malpractice or ",
+			"something, but it's only a dog, so who cares.",
+		]),
 	},
 	patato: {
 		evidence: [],
