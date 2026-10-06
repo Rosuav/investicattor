@@ -83,6 +83,55 @@ const suspects = {
 		escaped: P("text here for if you accused someone else"),
 		falsely: P("text here for if you accused him when innocent"),
 	},
+	zeke: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	"mr-gruff": {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	patato: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	james: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	dorothy: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	judy: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
+	nobody: {
+		evidence: [],
+		correct: P(""),
+		noproof: P(""),
+		escaped: P(""),
+		falsely: P(""),
+	},
 };
 state.guilty = random_choice(Object.keys(suspects));
 if (!enforce_time_limits) console.log("GUILTY:", state.guilty);
@@ -90,6 +139,11 @@ if (!enforce_time_limits) console.log("GUILTY:", state.guilty);
 //with suspects[n].falsely above.
 Object.entries({
 	alice: P("how dare you accuse the little girl"),
+	rex: P(""),
+	"frank-and-stan": P(""),
+	windvane: P(""),
+	"the-stuff": P(""),
+	lyn: P(""),
 }).forEach(([id, falsely]) => suspects[id] = {falsely});
 
 
