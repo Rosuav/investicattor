@@ -5,6 +5,11 @@ h2,h3,h4,h5,h6 {
 	font-weight: bold;
 }
 
+/* Get rid of some of the superfluous banner */
+header.page-header {padding: 0;}
+header.page-header h1, header.page-header h2 {transform: scale(0.75); margin: 0;}
+header .btn {display: none;}
+
 .travelbuttons {
 	border: 2px inset silver;
 	padding: 10px;
