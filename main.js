@@ -60,14 +60,27 @@ function random_choice(arr) {
 const state = {scene: "intro"};
 let here = { }; //Same as state[state.scene] once we're in a location.
 
+//In order to win, you need to accuse the correct person AND you have to have all of the
+//specified evidence recorded. This will usually include two things in the "evidence" section
+//and two prior investigables.
 const suspects = {
 	bob: {
-		correct: "text here for the final scene if you accused him",
+		evidence: ["crimescene.foodbowl", "evidence.foodbowl", "shop.tuna", "evidence.shoptuna"],
+		correct: "text here for the final scene if you caught him",
+		noproof: "text here for if you accused him but didn't get the evidence",
+		escaped: "text here for if you accused someone else",
+		falsely: "text here for if you accused him when innocent",
+	},
+	tomas: {
+		evidence: ["shop.tuna", "evidence.shoptuna", "shop.tomas", "evidence.tomas"],
+		correct: "text here for the final scene if you caught him",
+		noproof: "text here for if you accused him but didn't get the evidence",
 		escaped: "text here for if you accused someone else",
 		falsely: "text here for if you accused him when innocent",
 	},
 };
 state.suspect = random_choice(Object.keys(suspects));
+if (!enforce_time_limits) console.log("GUILTY:", state.suspect);
 
 const locations = {
 	crimescene: {
@@ -202,6 +215,7 @@ const investigate_basic = {
 		alice: P("Ask Alice for testimony - relevant to multiple accusations"),
 		fridge: P("Search the fridge and cupboards, will come up blank"),
 		bob: P("Ask Bob for testimony"),
+		tomas: P("Interrogate Tomas about the stocking of tuna"),
 		zeke: P("Report what you saw about Zeke"),
 		dogbowl: P("There's no tuna in the dog's bowl"),
 		rex: P("The only confession the humans recorded was 'Woof'"),
@@ -460,6 +474,8 @@ const investigate_full = {
 		alice: () => P("Ask Alice for testimony - relevant to multiple accusations"),
 		fridge: () => P("Search the fridge and cupboards, will come up blank"),
 		bob: () => P("Ask Bob for testimony"),
+		tomas: () => P("Interrogate Tomas to no avail"),
+		_tomas_tomas: () => P("Ask Tomas about the tuna on the shelves"),
 		zeke: () => P("Report what you saw about Zeke"),
 		dogbowl: () => P("There's no tuna in the dog's bowl"),
 		rex: () => P("The only confession the humans recorded was 'Woof'"),
@@ -482,7 +498,7 @@ const investigate_full = {
 		ricebot: () => P("You don't even know a Ricebot!"),
 	},
 };
-//Allow the "full investigate" renderer to not crash, but we move right along anyway
+//Allow the "full investigate" renderer to not crash, but we move right along anyway so the return value isn't relevant
 for (let suspect of Object.keys(investigate_basic.accuse)) investigate_full.accuse[suspect] = () => null;
 
 function TRAVELBUTTONS(dest) {
@@ -493,6 +509,15 @@ function TRAVELBUTTONS(dest) {
 		(dest||all_locations).map(d => BUTTON({type: "button", "data-dest": d, disabled: !!state[d]}, locations[d].dest)),
 		!have_dest && BUTTON({type: "button", "data-dest": "accuse"}, "Announce your results"),
 	]);
+}
+
+//Check if all of a set of items were investigated fully
+function did_investigate(items) {
+	for (let item of items) {
+		const [place, keyword] = item.split(".");
+		if (!state[place] || !state[place].investigated[keyword]) return false;
+	}
+	return true;
 }
 
 const render_scene = {
@@ -517,7 +542,11 @@ const render_scene = {
 	results() {return [
 		H2("Police Station"),
 		state.suspect === state.evidence.accused
-			? P(suspects[state.suspect].correct)
+			//You picked the right person. Did you have all the evidence you need?
+			? did_investigate(suspects[state.suspect].evidence)
+				? P(suspects[state.suspect].correct)
+				: P(suspects[state.suspect].noproof)
+			//You picked the wrong person. The guilty one escaped, and the accused one is angry.
 			: [P(suspects[state.suspect].escaped), P(suspects[state.evidence.accused].falsely)],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
