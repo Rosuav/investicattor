@@ -53,8 +53,21 @@ const markdown = (() => {
 	return markdown;
 })();
 
+function random_choice(arr) {
+	return arr[Math.floor(Math.random() * arr.length)];
+}
+
 const state = {scene: "intro"};
 let here = { }; //Same as state[state.scene] once we're in a location.
+
+const suspects = {
+	bob: {
+		correct: "text here for the final scene if you accused him",
+		escaped: "text here for if you accused someone else",
+		falsely: "text here for if you accused him when innocent",
+	},
+};
+state.suspect = random_choice(Object.keys(suspects));
 
 const locations = {
 	crimescene: {
@@ -641,10 +654,6 @@ const cat_quotes = {
 		"Confront what frightens or offends you. Reckless or insulting talk should never go unchallenged.",
 	],
 };
-
-function random_choice(arr) {
-	return arr[Math.floor(Math.random() * arr.length)];
-}
 
 on("click", "#shownotes", e => {
 	let situation = "generic";
