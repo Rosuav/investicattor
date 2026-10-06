@@ -66,17 +66,17 @@ let here = { }; //Same as state[state.scene] once we're in a location.
 const suspects = {
 	bob: {
 		evidence: ["crimescene.foodbowl", "evidence.foodbowl", "shop.tuna", "evidence.shoptuna"],
-		correct: "text here for the final scene if you caught him",
-		noproof: "text here for if you accused him but didn't get the evidence",
-		escaped: "text here for if you accused someone else",
-		falsely: "text here for if you accused him when innocent",
+		correct: P("The evidence is clear: "),
+		noproof: P("text here for if you accused him but didn't get the evidence"),
+		escaped: P("text here for if you accused someone else"),
+		falsely: P("text here for if you accused him when innocent"),
 	},
 	tomas: {
 		evidence: ["shop.tuna", "evidence.shoptuna", "shop.tomas", "evidence.tomas"],
-		correct: "text here for the final scene if you caught him",
-		noproof: "text here for if you accused him but didn't get the evidence",
-		escaped: "text here for if you accused someone else",
-		falsely: "text here for if you accused him when innocent",
+		correct: P("text here for the final scene if you caught him"),
+		noproof: P("text here for if you accused him but didn't get the evidence"),
+		escaped: P("text here for if you accused someone else"),
+		falsely: P("text here for if you accused him when innocent"),
 	},
 };
 state.guilty = random_choice(Object.keys(suspects));
@@ -543,10 +543,10 @@ const render_scene = {
 		state.correct
 			//You picked the right person. Did you have all the evidence you need?
 			? did_investigate(suspects[state.guilty].evidence)
-				? P(suspects[state.guilty].correct)
-				: P(suspects[state.guilty].noproof)
+				? suspects[state.guilty].correct
+				: suspects[state.guilty].noproof
 			//You picked the wrong person. The guilty one escaped, and the accused one is angry.
-			: [P(suspects[state.guilty].escaped), P(suspects[state.accused].falsely)],
+			: [suspects[state.guilty].escaped, suspects[state.accused].falsely],
 		DIV({class: "travelbuttons"}, [
 			BUTTON({type: "button", "data-dest": "results"}, "Conclude the case"),
 		]),
