@@ -231,11 +231,26 @@ const suspects = {
 		]),
 	},
 	judy: {
-		evidence: [],
-		correct: P(""),
-		noproof: P(""),
-		escaped: P(""),
-		falsely: P(""),
+		evidence: ["fission.counter", "evidence.counter", "fission.staff", "evidence.judy"],
+		correct: P([
+			"It was mostly a series of honest mistakes. Judy ordered canned tuna for the fish-and-chippery, ",
+			"Tomas handed it to the delivery driver, the driver inadvertently combined two fish deliveries, ",
+			"and the fish-and-chippery got Misty's food as well as their own. There is no crime here, just ",
+			"a sad state of affairs in which canned food is needed in too many places at once. You ask Judy ",
+			"to perform penance of six headpats and some cutesy compliments, and she obliges.",
+		]),
+		noproof: P([
+			"It looks like perhaps Judy ordered tuna, but how this resulted in none being left for Misty is ",
+			"a Mist-er-y.",
+		]),
+		escaped: P([
+			"Perhaps the real culprit here wasn't even a criminal at all, but just one of the staff at the ",
+			"fish-and-chippery trying to maintain stock. But we shall never know.",
+		]),
+		falsely: P([
+			"Poor Judy, trying her best to keep everything going, and now accused of theft on top of it all. ",
+			"It's a little unfair, but virtue is triumphant only in theatrical performances."
+		]),
 	},
 	nobody: {
 		//NOTE: In order to progress the game, you must select two pieces of evidence, but so long
@@ -559,6 +574,11 @@ const investigate_full = {
 		counter: () => P([
 			"You jump up onto the counter, only to get shooed away. Not with a literal shoe, fortunately - not this time.",
 		]),
+		_judy_counter: () => P([
+			"You jump up onto the counter, and get shooed away; but before you do, you spot an empty tuna can that was ",
+			"clearly used by the staff. This is what we in the biz call 'a clue'. (You can spend two mana and sacrifice it ",
+			"to draw a card.)"
+		]),
 		customers: () => P([
 			"You walk up to each of the humans, rub yourself against their legs, and determine that they're all innocent.",
 		]),
@@ -570,10 +590,15 @@ const investigate_full = {
 			: "This is probably foreshadowing or something.",
 		]),
 		staff: () => P([
-			//Possible suspect: A staff member ran out of fish, bought more, and got misdelivery of the cans.
-			//Her name will be Judy.
 			"They're very busy, and you're a little apprehensive about the kind of unfriendly welcome you might get. ",
 			"Anyhow, entertaining as it might be to trip the Fish Friar or the Chip Monk, it wouldn't help you find the tuna.",
+		]),
+		_judy_staff: () => P([
+			"You poke your nose where it doesn't belong, not in the hot grease though (not a second time!). ",
+			"One of the staff, named Judy, is in charge of restocking the supplies. She has a suspicious amount ",
+			"of tuna, given the circumstances! Just in case, you inspect her shoes. ",
+			state.fission?.investigated?.footprints ? "They don't match the footprints on the floor."
+			: "This is probably foreshadowing or something.",
 		]),
 		diners: () => [ //extcall
 			//Never a suspect. This is JUST a red herring.
@@ -597,7 +622,7 @@ const investigate_full = {
 				"I suppose it's a red herring, then.",
 			]),
 		],
-		footprints: () => P("They look like a size meow, or maybe a bit bigger."),
+		footprints: () => P("They look like a size meow, or maybe a bit bigger. You take note of how they look, in case you spot someone with matching shoes."),
 		_patato_footprints: () => P([
 			"They look like a size meow, or maybe a bit bigger.",
 			state.neighbour_smelly?.investigated?.couch ? " They match the shoes that Patato is wearing!"
@@ -785,11 +810,20 @@ const investigate_full = {
 		stuff: () => P("Spending even more time searching the pile of stuff is unfruitful, and worse, untunaful."),
 		window: () => P("It's a high window. Extremely frustrating, but you can't arrest a window."),
 		judy: () => P("All you get for your trouble is another shooing away."),
+		_judy_judy: () => P([
+			"Judy breaks down and admits that she was unable to get the fresh fish they usually use, ",
+			"and ordered delivery of canned tuna. The shop overdelivered, which was convenient, and ",
+			"she did not notify them of this.",
+		]),
 		lyn: () => P([
 			"You ask Lyn for help, and she's happy to spend time with you, but you can tell she really ",
 			"just wants to put you in her slide deck. I don't want to be a moving picture in a book!",
 		]),
 		counter: () => P("You didn't actually find anything on the counter, so that won't help much."),
+		_judy_counter: () => P(
+			state.fission?.investigated?.counter ? "An empty tuna can is all the proof you need: this place uses canned food."
+			: "You didn't actually find anything on the counter, so that won't help much.",
+		),
 		footprints: () => P("You don't recognize who these came from."),
 		_patato_footprints: () => P(
 			state.fission?.investigated?.footprints && state.neighbour_smelly?.investigated?.couch
