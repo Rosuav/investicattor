@@ -331,7 +331,7 @@ const locations = {
 	fission: {
 		dest: "Fish-and-chippery",
 		markdown: "fish-and-chippery",
-		time_limit: 3,
+		time_limit: 4,
 		time_min: 1,
 	},
 	neighbour_canine: {
@@ -397,6 +397,7 @@ const investigate_basic = {
 		staff: P("They dunk the fish in oil. I think they do other things too but mostly fish."),
 		diners: P("One of the people looks familiar. Might be worth talking to her."),
 		footprints: P("There are footprints on the floor! Not yours! They may be human!"),
+		vendingmachine: P("The humans like these things for drinks. I don't see anything tuna-shaped in there."),
 	},
 	neighbour_canine: {
 		dogbowl: P("Rex's bowl usually has some food in it. What is it today?"),
@@ -632,6 +633,11 @@ const investigate_full = {
 			"They look like a size meow, or maybe a bit bigger.",
 			state.fission.investigated.customers ? " They match the shoes that Dorothy is wearing!"
 			: " You take note of how they look, in case you spot someone with matching shoes.",
+		]),
+		vendingmachine: () => P([
+			"It's a drinks vending machine. I think they call it that. 'Vending' must be what it does ",
+			"when a human opens the door and takes out a can of something liquid. Never tuna. Do you ",
+			"think they have tuna vending machines in heaven?",
 		]),
 	},
 	neighbour_canine: {

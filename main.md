@@ -113,6 +113,8 @@ humans, eventually one of them will give me a share! It is only right and fittin
 Most of the shop is dominanted by the [counter](counter) which has humans [in front of it](customers) and [behind it](staff).
 There are some other humans [eating at the tables](diners). There's also several [footprints](footprints) on the floor.
 
+A [large box](vendingmachine) holds colourful things that are often called cans.
+
 ## Police Station
 
 (Note: The accusation IDs need to match the Markdown heading IDs, and reused evidence IDs need to refer to the same evidence.)
